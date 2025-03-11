@@ -1,1 +1,45 @@
 # HBM
+PCIe-HBM_basic-prj   |----> .vs (contains meta data and config for visual studio)
+		     |----> flist (filelist (all sv src codes), include them so the tool automatically adds them for simulation synthesis, verification purposes)
+		     |----> src
+		     |----> tcl  (Tcl scripts can automate the setup and execution of simulations)
+		     |----> README
+
+
+--------------------------------------------------------------------------------------
+--------------------Data transmission between the HBM and the Host--------------------
+--------------------------------------------------------------------------------------
+The presented pipe, {Host <-> PCIe <-> QDMA <-> Smart Connect <-> HBM},
+serves as a communication channel for transferring data between the main memory (host) and the HBM.
+
+To begin with, our host is connected to the PCIe, which is then connected to the QDMA.
+The PCIe, which serves as a middle man between the Host and QDMA propagates data in a serial stream. 
+Next, comes the QDMA module, which is an optimized version of the DMA. DMA (Direct Memory Access),
+allows data to be moved between two parties without involving the CPU. For instance DMA, can move data
+between a memory and a peripheral or between two memory regions. The enhancement offered in the QDMA over 
+the DMA is the queuing mechanism. The queuing mechanism, allows for multiple transfers to be set up concurrently (scheduled), 
+optimizing the overall throughput even though the PCIe itself is a serial bus. This introduces the
+possibility of having multiple commands queued, in other words effectively overlapping the transfers
+in the pipe, allowing no space for latency. 
+(The parallelism here is about how many transfer requests can be processed at once (queued, prepared, and ready at the same time),
+ so that no time is wasted in between transfers)
+
+To initiate a data transfer over PCIe, we must initialize a scripter. 
+A scripter is a 22-byte data structurethat typically contains :
+{Addr of structure (pointer where script resides)|Dest addr in HBM (where data is being moved to)| amount of data to be moved}.
+Each scripter acts as a small instruction set for the QDMA, guiding the data movement process. Scripters are always
+set up by the host (Linux), no matter what direction is the intended transfer.
+The QDMA can support up to 2048 queues, each one of these queues holds the addresses of the scripters. 
+Moreover, the QDMA module is configured to operate in memory-mapped mode rather than AXI stream mode.
+This means that the QDMA takes the PCIe packets and then converts them into AXI transactions. However, 
+we are talking about AXI4 memory-mapped transactions, that includes address data, data and control information.
+ The AXI-4 transactions are special due to their random accesss pattern and precise memory control
+These transactions are sent over to the Smart connect through the MAXI interface. The smart connect is an arbitrer
+hardware, which connect then routes the AXI4 transactions to the HBM banks. This configuration here, takes advantage
+of the HBM parallel access capabilities, as each transaction can target a specific memory region.
+
+
+
+
+
+		     
