@@ -1,9 +1,10 @@
 # HBM
-PCIe-HBM_basic-prj   |----> .vs (contains meta data and config for visual studio)
-		     |----> flist (filelist (all sv src codes), include them so the tool automatically adds them for simulation synthesis, verification purposes)
-		     |----> src
-		     |----> tcl  (Tcl scripts can automate the setup and execution of simulations)
-		     |----> README
+PCIe-HBM_basic-prj   
+|----> .vs (contains meta data and config for visual studio)	    
+|----> flist (filelist (all sv src codes), include them so the tool automatically adds them for simulation synthesis, verification purposes)
+|----> src
+|----> tcl  (Tcl scripts can automate the setup and execution of simulations)
+|----> README
 
 
 --------------------------------------------------------------------------------------
