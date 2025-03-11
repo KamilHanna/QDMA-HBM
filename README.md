@@ -1,46 +1,28 @@
-# HBM
-PCIe-HBM_basic-prj   
-|----> .vs (contains meta data and config for visual studio)	    
-|----> flist (filelist (all sv src codes), include them so the tool automatically adds them for simulation synthesis, verification purposes)
-|----> src
-|----> tcl  (Tcl scripts can automate the setup and execution of simulations)
-|----> README
 
+## PCIE AND HBM SIMULATION
 
---------------------------------------------------------------------------------------
---------------------Data transmission between the HBM and the Host--------------------
---------------------------------------------------------------------------------------
-The presented pipe, {Host <-> PCIe <-> QDMA <-> Smart Connect <-> HBM},
-serves as a communication channel for transferring data between the main memory (host) and the HBM.
+This folder contains the necessary sources and scripts to generate a Vivado project targeting an Alveo U55C board and launch a Questa simulation of a system containing a set of Snitch cores connected with an HBM and a QDMA interface for PCIe. The simulation consists in loading the binary file of a Polybench into the HBM memory, and then running such program with the Snitch cores.
 
-To begin with, our host is connected to the PCIe, which is then connected to the QDMA.
-The PCIe, which serves as a middle man between the Host and QDMA propagates data in a serial stream. 
-Next, comes the QDMA module, which is an optimized version of the DMA. DMA (Direct Memory Access),
-allows data to be moved between two parties without involving the CPU. For instance DMA, can move data
-between a memory and a peripheral or between two memory regions. The enhancement offered in the QDMA over 
-the DMA is the queuing mechanism. The queuing mechanism, allows for multiple transfers to be set up concurrently (scheduled), 
-optimizing the overall throughput even though the PCIe itself is a serial bus. This introduces the
-possibility of having multiple commands queued, in other words effectively overlapping the transfers
-in the pipe, allowing no space for latency. 
-(The parallelism here is about how many transfer requests can be processed at once (queued, prepared, and ready at the same time),
- so that no time is wasted in between transfers)
+### What you need to do:
 
-To initiate a data transfer over PCIe, we must initialize a scripter. 
-A scripter is a 22-byte data structurethat typically contains :
-{Addr of structure (pointer where script resides)|Dest addr in HBM (where data is being moved to)| amount of data to be moved}.
-Each scripter acts as a small instruction set for the QDMA, guiding the data movement process. Scripters are always
-set up by the host (Linux), no matter what direction is the intended transfer.
-The QDMA can support up to 2048 queues, each one of these queues holds the addresses of the scripters. 
-Moreover, the QDMA module is configured to operate in memory-mapped mode rather than AXI stream mode.
-This means that the QDMA takes the PCIe packets and then converts them into AXI transactions. However, 
-we are talking about AXI4 memory-mapped transactions, that includes address data, data and control information.
- The AXI-4 transactions are special due to their random accesss pattern and precise memory control
-These transactions are sent over to the Smart connect through the MAXI interface. The smart connect is an arbitrer
-hardware, which connect then routes the AXI4 transactions to the HBM banks. This configuration here, takes advantage
-of the HBM parallel access capabilities, as each transaction can target a specific memory region.
+- Make sure to have Vivado in your path (launch `source /<Vivado_Install_Path>/<Vivado_Version>/settings64.sh` in the Linux terminal)
+- Set Vivado version in `./tcl/qdma_hbm_bd.tcl`
+- Set the path to the compiled Vivado libraries for Questa in `./tcl/gen_sim_prj.tcl`
+- Launch the generation of the Vivado project running the project TCL script with Vivado (from the current folder, launch `vivado -mode batch -source ./tcl/gen_sim_prj.tcl`. The Vivado GUI will open automatically.
+- Run the simulation from the Vivado GUI.
 
+### What you will see:
 
+The testbench launches two tasks: *TSK_QDMA_MM_H2C_TEST* and *TSK_QDMA_MM_C2H_TEST*, which have the goal, respectively, to write a bunch of data from the simulated host memory to the HBM and to read that data back from the HBM to the host memory.
+This functions use a single queue which is populated with various descriptors generated in the initialization functions.
 
+### Folder organization
 
-
-		     
+- **flist:** it contains just a file with a list of all the sources files used for the simulation
+- **src:** it contains all the source files.
+    - *include:* contains a set of header files used by the project, including the `sample_tests.vh` which contains the main functions called by the top testbench file
+    - *RP_model:* contains the sources describing the root port model
+    - *usrapp:* contains the tx, rx, cfg and com parts of the testbench. In particular, the tx source file contains most of the functions used by the testbench
+    - `qdma_tb.sv:` top testbench source file
+    - `qdma_top.sv:` top synthesizable file, containing the block design
+- **tcl:** it contains two tcl scripts, one to generate the project and one to generate the block design.
