@@ -1,0 +1,9 @@
+src/RP_model/pcie_4_c_rp.v
+src/RP_model/sys_clk_gen.v
+src/RP_model/sys_clk_gen_ds.v
+src/usrapp/usp_pci_exp_usrapp_cfg.v
+src/usrapp/usp_pci_exp_usrapp_com.v
+src/usrapp/usp_pci_exp_usrapp_rx.v
+src/usrapp/usp_pci_exp_usrapp_tx.sv
+src/RP_model/xilinx_pcie_uscale_rp.v
+src/RP_model/xp4c_usp_smsw_model_core_top.v
