@@ -69,17 +69,31 @@
 
 `include "board_common.vh"
 `define SIMULATION
-`define LINKWIDTH 16
+// Configuring the PCIe link width (x16) and speed (Gen4)
+`define LINKWIDTH 16 //How many lanes are used for data transmission. (serial lanes)
 `define LINKSPEED 4
 
+//top level module of test bench
 module board;
   
   parameter          REF_CLK_FREQ       = 0 ;      // 0 - 100 MHz, 1 - 125 MHz,  2 - 250 MHz
   localparam         REF_CLK_HALF_CYCLE = (REF_CLK_FREQ == 0) ? 5000 :
                                           (REF_CLK_FREQ == 1) ? 4000 :
                                           (REF_CLK_FREQ == 2) ? 2000 : 0;
+                                        
+  /*In the context of PCIe, PF0_DEV_CAP_MAX_PAYLOAD_SIZE refers to the maximum size of a data payload 
+    (in bytes) that can be transferred in a single PCIe transaction for a particular device or function. 
+    011: 1024 bytes*/  
   localparam   [2:0] PF0_DEV_CAP_MAX_PAYLOAD_SIZE = 3'b011;
+  
+  // Configuring the PCIe link width and speed  
+  //(LINK WIDTH : How many lanes the PCIe bus will use for data transission and reception
+  /* We are talking about serial lanes here. (pair wires, one for positive and one for negative)
+     in other words  differential signaling (pair of differential signals) */
+     // EACH LANE CONSISTS OF 2 WIRES TO BENEFIT FROM DDR. (+ , -)
   localparam   [4:0] LINK_WIDTH = 5'd`LINKWIDTH;
+  // Data rate or speed which each lane can transmit data Gen4 16GT/s (Gigatransfers per second per lane)
+  // 16 billion transfers per second
   localparam   [2:0] LINK_SPEED = 3'h`LINKSPEED;
 
 //  defparam board.EP.qdma_0_i.inst.pcie4c_ip_i.inst.PL_SIM_FAST_LINK_TRAINING=2'h3;
@@ -90,7 +104,8 @@ module board;
 
   // System-level clock and reset
   logic                sys_rst_n;
-
+  
+  // root port and end point clocks required for PCIe communication.
   logic               ep_sys_clk;
   logic               rp_sys_clk;
   logic               ep_sys_clk_p;
@@ -112,6 +127,7 @@ module board;
 
 
 
+  // Generating rp and ep clocks mentioned earlier. (REF_CLK_HALF_CYCLE, configured on top earlier)
   //------------------------------------------------------------------------------//
   // Generate system clock
   //------------------------------------------------------------------------------//
@@ -136,7 +152,8 @@ module board;
 
 
   //------------------------------------------------------------------------------//
-  // Generate system-level reset
+  // Generate system-level reset (reset duration 500 clk cycles, done in intial block)
+  // ensures proper system initialization before we begin with data transfers.
   //------------------------------------------------------------------------------//
   parameter ON=3, OFF=4, UNIQUE=32, UNIQUE0=64, PRIORITY=128;
 
@@ -187,6 +204,9 @@ module board;
   //------------------------------------------------------------------------------//
   // Simulation Root Port Model
   // (Comment out this module to interface EndPoint with BFM)
+  
+  /* The Root Port (RP) connects the host (CPU/FPGA) to the PCIe BUS and initiates
+     data transfers with other devices (End Point)*/
   //------------------------------------------------------------------------------//
   //
   // PCI-Express Model Root Port Instance
@@ -195,25 +215,28 @@ module board;
   xilinx_pcie4_uscale_rp
   #(
      .PF0_DEV_CAP_MAX_PAYLOAD_SIZE(PF0_DEV_CAP_MAX_PAYLOAD_SIZE)
-     //ONLY FOR RP
+     //ONLY FOR RP (max payload size supported by root port)
   ) RP (
 
-    // SYS Inteface
+    // SYS Inteface (these clk signals drive the timing for all data trasmissions and receiving)
     .sys_clk_n(rp_sys_clk_n),
     .sys_clk_p(rp_sys_clk_p),
     .sys_rst_n                  ( sys_rst_n ),
     // PCI-Express Serial Interface
+    // tranmission and recieve lines differential pairs for PCIe
+    // Carry data transmitted from RP TO EP OR received from EP to RP.
     .pci_exp_txn(rp_pci_exp_txn),
     .pci_exp_txp(rp_pci_exp_txp),
     .pci_exp_rxn(ep_pci_exp_txn),
     .pci_exp_rxp(ep_pci_exp_txp)
 
   );
-
+  
+  //simulation control ( signal initialization and transaction setups for root port.
 
   initial begin
 
-    if ($test$plusargs ("dump_all")) begin
+    if ($test$plusargs ("dump_all")) begin //generate waveform dumps for debugging
 
   `ifdef NCV // Cadence TRN dump
 
@@ -259,29 +282,37 @@ initial begin
   board.RP.tx_usrapp.TSK_USR_DATA_SETUP_SEQ;
 
   board.RP.tx_usrapp.TSK_SIMULATION_TIMEOUT(10050);
+  
+  //TEST ITERATION (testbench loop)------------------------
+  /*
+  Simulating the Root Port (RP), the loop iterates through all available PCIe Physical Functions (PFs),
+  these PFs ar represented by pfIndex. (Total number of PFs is 4 in this example (NUM_OF_PFS)
+  */
   for (board.RP.tx_usrapp.pfIndex = 0; board.RP.tx_usrapp.pfIndex < board.RP.tx_usrapp.NUMBER_OF_PFS; board.RP.tx_usrapp.pfIndex = board.RP.tx_usrapp.pfIndex + 1)
-  begin
+  begin //We set Endpoint device IDs based on current pfIndex. (each pfIndex correspond to a diff EP device ID)(ex : pfIndex == 0 _>> 16'h903F
     board.RP.tx_usrapp.pfTestIteration = board.RP.tx_usrapp.pfIndex;
     if( board.RP.tx_usrapp.pfIndex == 0) board.RP.tx_usrapp.EP_DEV_ID1 = 16'h903F;
     if( board.RP.tx_usrapp.pfIndex == 1) board.RP.tx_usrapp.EP_DEV_ID1 = 16'h913F;
     if( board.RP.tx_usrapp.pfIndex == 2) board.RP.tx_usrapp.EP_DEV_ID1 = 16'h923F;
     if( board.RP.tx_usrapp.pfIndex == 3) board.RP.tx_usrapp.EP_DEV_ID1 = 16'h933F;
-
+    //We construct the DEV_VEN_ID by concatenatin Endpoint Device ID with a vendor ID (16'h10EE), 32-bit format value
     board.RP.tx_usrapp.DEV_VEN_ID = (board.RP.tx_usrapp.EP_DEV_ID1 << 16) | (32'h10EE);
+    //We update the EP_BUS_DEV_FNS value by modifying the bus, device and function numbers based on pfIndex.
     board.RP.tx_usrapp.EP_BUS_DEV_FNS = {board.RP.tx_usrapp.EP_BUS_DEV_FNS_INIT[15:2], board.RP.tx_usrapp.pfIndex[1:0]};
 
-    board.RP.tx_usrapp.TSK_SYSTEM_INITIALIZATION;
-    board.RP.tx_usrapp.TSK_BAR_INIT;
+    // preparing the system for simulation
+    board.RP.tx_usrapp.TSK_SYSTEM_INITIALIZATION; //init system
+    board.RP.tx_usrapp.TSK_BAR_INIT;    // init PCIe BARs (Base Address Registers)
 
     // Find which BAR is XDMA BAR and assign 'xdma_bar' variable
     board.RP.tx_usrapp.TSK_XDMA_FIND_BAR;
 
-    // Find which BAR is USR BAR and assign 'user_bar' variable
+    // Find which BAR is USR BAR and assign 'user_bar' variable (user defined base address register)
     board.RP.tx_usrapp.TSK_REG_READ(board.RP.tx_usrapp.xdma_bar, 16'h00);
     if(board.RP.tx_usrapp.P_READ_DATA[31:16] == 16'h1fd3) begin    // QDMA
       board.RP.tx_usrapp.TSK_FIND_USR_BAR;
     end
-
+    //check test name, if correct include tests from tests.vh
     board.RP.tx_usrapp.testname = "qdma_mm_test0";
     //Test starts here
     if(board.RP.tx_usrapp.testname == "dummy_test") begin
@@ -293,7 +324,7 @@ initial begin
       $display("[%t] %m: Error: Unrecognized TESTNAME: %0s", $realtime, board.RP.tx_usrapp.testname);
       $finish(2);
     end
-    wait (board.RP.tx_usrapp.pfTestIteration == (board.RP.tx_usrapp.pfIndex +1));
+    wait (board.RP.tx_usrapp.pfTestIteration == (board.RP.tx_usrapp.pfIndex +1)); // wait for test iteration
 
 
 
