@@ -8,7 +8,7 @@ Next, the QDMA module comes into play. It is an optimized version of the standar
 
 In simpler terms, the parallelism in this setup refers to how many transfer requests can be prepared and ready at once, ensuring that no time is wasted between transfers.
 
-To initiate a data transfer over PCIe, a **scripter** must be initialized. A scripter is a 22-byte data structure that typically contains:
+To initiate a data transfer over PCIe, a **scripter** must be initialized. A scripter is a 32-byte data structure that typically contains:
 - Address of structure (pointer where the script resides)
 - Destination address in HBM (where the data is being moved to)
 - Amount of data to be moved
