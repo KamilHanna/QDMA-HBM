@@ -1,0 +1,112 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.717934",
+   "Default View_TopLeft":"-1389,769",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
+#  -string -flagsOSRD
+preplace port port-id_hbm_clk_n -pg 1 -lvl 0 -x -2470 -y 810 -defaultsOSRD
+preplace port port-id_hbm_clk_p -pg 1 -lvl 0 -x -2470 -y 830 -defaultsOSRD
+preplace port port-id_aresetn -pg 1 -lvl 0 -x -2470 -y 780 -defaultsOSRD
+preplace port port-id_aclk_0 -pg 1 -lvl 0 -x -2470 -y 760 -defaultsOSRD
+preplace port port-id_aresetn_0 -pg 1 -lvl 0 -x -2470 -y 730 -defaultsOSRD
+preplace port port-id_S00_AXI_awvalid_0 -pg 1 -lvl 0 -x -2470 -y 70 -defaultsOSRD
+preplace port port-id_S00_AXI_awready_0 -pg 1 -lvl 0 -x -2470 -y 90 -defaultsOSRD -left
+preplace port port-id_S00_AXI_wlast_0 -pg 1 -lvl 0 -x -2470 -y 150 -defaultsOSRD
+preplace port port-id_S00_AXI_wvalid_0 -pg 1 -lvl 0 -x -2470 -y 190 -defaultsOSRD
+preplace port port-id_S00_AXI_wready_0 -pg 1 -lvl 5 -x 1350 -y 210 -defaultsOSRD
+preplace port port-id_S00_AXI_bvalid_0 -pg 1 -lvl 5 -x 1350 -y 270 -defaultsOSRD
+preplace port port-id_S00_AXI_bready_0 -pg 1 -lvl 0 -x -2470 -y 290 -defaultsOSRD
+preplace port port-id_S00_AXI_arvalid_0 -pg 1 -lvl 0 -x -2470 -y 510 -defaultsOSRD
+preplace port port-id_S00_AXI_arready_0 -pg 1 -lvl 5 -x 1350 -y 530 -defaultsOSRD
+preplace port port-id_S00_AXI_rlast_0 -pg 1 -lvl 5 -x 1350 -y 610 -defaultsOSRD
+preplace port port-id_S00_AXI_rvalid_0 -pg 1 -lvl 5 -x 1350 -y 630 -defaultsOSRD
+preplace port port-id_S00_AXI_rready_0 -pg 1 -lvl 0 -x -2470 -y 650 -defaultsOSRD
+preplace portBus S00_AXI_awid_0 -pg 1 -lvl 0 -x -2470 -y -130 -defaultsOSRD
+preplace portBus S00_AXI_awaddr_0 -pg 1 -lvl 0 -x -2470 -y -110 -defaultsOSRD
+preplace portBus S00_AXI_awlen_0 -pg 1 -lvl 0 -x -2470 -y -90 -defaultsOSRD
+preplace portBus S00_AXI_awsize_0 -pg 1 -lvl 0 -x -2470 -y -70 -defaultsOSRD
+preplace portBus S00_AXI_awburst_0 -pg 1 -lvl 0 -x -2470 -y -50 -defaultsOSRD
+preplace portBus S00_AXI_awlock_0 -pg 1 -lvl 0 -x -2470 -y -30 -defaultsOSRD
+preplace portBus S00_AXI_awcache_0 -pg 1 -lvl 0 -x -2470 -y -10 -defaultsOSRD
+preplace portBus S00_AXI_awprot_0 -pg 1 -lvl 0 -x -2470 -y 10 -defaultsOSRD
+preplace portBus S00_AXI_awqos_0 -pg 1 -lvl 0 -x -2470 -y 30 -defaultsOSRD
+preplace portBus S00_AXI_awuser_0 -pg 1 -lvl 0 -x -2470 -y 50 -defaultsOSRD
+preplace portBus S00_AXI_wdata_0 -pg 1 -lvl 0 -x -2470 -y 110 -defaultsOSRD
+preplace portBus S00_AXI_wstrb_0 -pg 1 -lvl 0 -x -2470 -y 130 -defaultsOSRD
+preplace portBus S00_AXI_wuser_0 -pg 1 -lvl 0 -x -2470 -y 170 -defaultsOSRD
+preplace portBus S00_AXI_bid_0 -pg 1 -lvl 5 -x 1350 -y 230 -defaultsOSRD
+preplace portBus S00_AXI_bresp_0 -pg 1 -lvl 5 -x 1350 -y 250 -defaultsOSRD
+preplace portBus S00_AXI_arid_0 -pg 1 -lvl 0 -x -2470 -y 310 -defaultsOSRD
+preplace portBus S00_AXI_araddr_0 -pg 1 -lvl 0 -x -2470 -y 330 -defaultsOSRD
+preplace portBus S00_AXI_arlen_0 -pg 1 -lvl 0 -x -2470 -y 350 -defaultsOSRD
+preplace portBus S00_AXI_arsize_0 -pg 1 -lvl 0 -x -2470 -y 370 -defaultsOSRD
+preplace portBus S00_AXI_arburst_0 -pg 1 -lvl 0 -x -2470 -y 390 -defaultsOSRD
+preplace portBus S00_AXI_arlock_0 -pg 1 -lvl 0 -x -2470 -y 410 -defaultsOSRD
+preplace portBus S00_AXI_arcache_0 -pg 1 -lvl 0 -x -2470 -y 430 -defaultsOSRD
+preplace portBus S00_AXI_arprot_0 -pg 1 -lvl 0 -x -2470 -y 450 -defaultsOSRD
+preplace portBus S00_AXI_arqos_0 -pg 1 -lvl 0 -x -2470 -y 470 -defaultsOSRD
+preplace portBus S00_AXI_aruser_0 -pg 1 -lvl 0 -x -2470 -y 490 -defaultsOSRD
+preplace portBus S00_AXI_rid_0 -pg 1 -lvl 5 -x 1350 -y 550 -defaultsOSRD
+preplace portBus S00_AXI_rdata_0 -pg 1 -lvl 5 -x 1350 -y 570 -defaultsOSRD
+preplace portBus S00_AXI_rresp_0 -pg 1 -lvl 5 -x 1350 -y 590 -defaultsOSRD
+preplace inst hbm_0 -pg 1 -lvl 4 -x 1020 -y -40 -defaultsOSRD
+preplace inst smartconnect_0 -pg 1 -lvl 2 -x 50 -y 270 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 2 -x 50 -y 820 -defaultsOSRD
+preplace inst proc_sys_reset_0 -pg 1 -lvl 3 -x 510 -y 780 -defaultsOSRD
+preplace inst qdma_hbm_bd_0 -pg 1 -lvl 1 -x -1170 -y 890 -defaultsOSRD
+preplace netloc aclk_n_1 1 0 2 -2430 1280 -230
+preplace netloc aclk_p_1 1 0 2 -2440J 1290 -190
+preplace netloc clk_wiz_0_clk_out1 1 2 2 290 260 780
+preplace netloc clk_wiz_0_locked 1 2 1 330 820n
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 3 1 800 50n
+preplace netloc resetn_0_1 1 0 3 -2450 1320 -170 930 340
+preplace netloc aclk_0_1 1 0 4 -2420J 1300 -240 940 320 240 770
+preplace netloc aresetn_0_1 1 0 4 -2410J 1310 -210 920 310 250 790
+preplace netloc S00_AXI_awid_0_1 1 0 2 N -130 N
+preplace netloc S00_AXI_awaddr_0_1 1 0 2 N -110 N
+preplace netloc S00_AXI_awlen_0_1 1 0 2 N -90 N
+preplace netloc S00_AXI_awsize_0_1 1 0 2 N -70 N
+preplace netloc S00_AXI_awburst_0_1 1 0 2 N -50 N
+preplace netloc S00_AXI_awlock_0_1 1 0 2 N -30 N
+preplace netloc S00_AXI_awcache_0_1 1 0 2 N -10 N
+preplace netloc S00_AXI_awprot_0_1 1 0 2 N 10 N
+preplace netloc S00_AXI_awqos_0_1 1 0 2 N 30 N
+preplace netloc S00_AXI_awuser_0_1 1 0 2 N 50 N
+preplace netloc S00_AXI_awvalid_0_1 1 0 2 N 70 N
+preplace netloc smartconnect_0_S00_AXI_awready 1 0 2 N 90 N
+preplace netloc S00_AXI_wdata_0_1 1 0 2 N 110 N
+preplace netloc S00_AXI_wstrb_0_1 1 0 2 N 130 N
+preplace netloc S00_AXI_wlast_0_1 1 0 2 N 150 N
+preplace netloc S00_AXI_wuser_0_1 1 0 2 N 170 N
+preplace netloc S00_AXI_wvalid_0_1 1 0 2 N 190 N
+preplace netloc smartconnect_0_S00_AXI_wready 1 1 4 -170 -240 NJ -240 NJ -240 1270J
+preplace netloc smartconnect_0_S00_AXI_bid 1 1 4 -210 -280 NJ -280 NJ -280 1300J
+preplace netloc smartconnect_0_S00_AXI_bresp 1 1 4 -200 -270 NJ -270 NJ -270 1280J
+preplace netloc smartconnect_0_S00_AXI_bvalid 1 1 4 -140 -220 300J 270 NJ 270 NJ
+preplace netloc S00_AXI_bready_0_1 1 0 2 N 290 N
+preplace netloc S00_AXI_arid_0_1 1 0 2 N 310 N
+preplace netloc S00_AXI_araddr_0_1 1 0 2 N 330 N
+preplace netloc S00_AXI_arlen_0_1 1 0 2 N 350 N
+preplace netloc S00_AXI_arsize_0_1 1 0 2 N 370 N
+preplace netloc S00_AXI_arburst_0_1 1 0 2 N 390 N
+preplace netloc S00_AXI_arlock_0_1 1 0 2 N 410 N
+preplace netloc S00_AXI_arcache_0_1 1 0 2 N 430 N
+preplace netloc S00_AXI_arprot_0_1 1 0 2 N 450 N
+preplace netloc S00_AXI_arqos_0_1 1 0 2 N 470 N
+preplace netloc S00_AXI_aruser_0_1 1 0 2 N 490 N
+preplace netloc S00_AXI_arvalid_0_1 1 0 2 -2410 500 -980
+preplace netloc smartconnect_0_S00_AXI_arready 1 1 4 -220 -290 NJ -290 NJ -290 1290J
+preplace netloc smartconnect_0_S00_AXI_rid 1 1 4 -190 -260 NJ -260 NJ -260 1260J
+preplace netloc smartconnect_0_S00_AXI_rdata 1 1 4 -150 910 NJ 910 NJ 910 1300J
+preplace netloc smartconnect_0_S00_AXI_rresp 1 1 4 -130 -210 250J 590 NJ 590 NJ
+preplace netloc smartconnect_0_S00_AXI_rlast 1 1 4 -180 -250 NJ -250 NJ -250 1250J
+preplace netloc smartconnect_0_S00_AXI_rvalid 1 1 4 -160 -230 NJ -230 NJ -230 1240J
+preplace netloc S00_AXI_rready_0_1 1 0 2 -2450 480 -970
+preplace netloc smartconnect_0_M00_AXI 1 2 2 230 -170 N
+preplace netloc smartconnect_0_M01_AXI 1 2 2 240 -150 N
+levelinfo -pg 1 -2470 -1170 50 510 1020 1350
+pagesize -pg 1 -db -bbox -sgen -2690 -300 1560 1630
+"
+}
+

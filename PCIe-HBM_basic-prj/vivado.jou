@@ -1,0 +1,238 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Wed Mar 26 15:47:00 2025
+# Process ID         : 1305031
+# Current directory  : /home/khanna/HBM/PCIe-HBM_basic-prj
+# Command line       : vivado -mode batch -source ./tcl/gen_sim_prj.tcl
+# Log file           : /home/khanna/HBM/PCIe-HBM_basic-prj/vivado.log
+# Journal file       : /home/khanna/HBM/PCIe-HBM_basic-prj/vivado.jou
+# Running On         : ogreOptiPlex
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 22.04.5 LTS
+# Processor Detail   : Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz
+# CPU Frequency      : 4705.725 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 67123 MB
+# Swap memory        : 2147 MB
+# Total Virtual      : 69271 MB
+# Available Virtual  : 61093 MB
+#-----------------------------------------------------------
+source ./tcl/gen_sim_prj.tcl
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+delete_bd_objs [get_bd_intf_nets qdma_0_M_AXI_LITE] [get_bd_intf_nets axi_bram_ctrl_0_BRAM_PORTA] [get_bd_cells axi_bram_ctrl_0]
+delete_bd_objs [get_bd_cells blk_mem_gen_0]
+delete_bd_objs [get_bd_nets xlconstant_1_dout] [get_bd_nets sys_clk_0_1] [get_bd_nets sys_clk_gt_0_1] [get_bd_intf_nets qdma_0_M_AXI] [get_bd_intf_nets qdma_0_pcie_mgt] [get_bd_cells qdma_0]
+delete_bd_objs [get_bd_ports qdma_clk]
+delete_bd_objs [get_bd_ports qdma_clk_gt]
+undo
+undo
+undo
+undo
+undo
+undo
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+delete_bd_objs [get_bd_intf_nets axi_bram_ctrl_0_BRAM_PORTA] [get_bd_cells blk_mem_gen_0]
+delete_bd_objs [get_bd_intf_nets qdma_0_M_AXI_LITE] [get_bd_cells axi_bram_ctrl_0]
+undo
+delete_bd_objs [get_bd_intf_nets qdma_0_M_AXI_LITE] [get_bd_cells axi_bram_ctrl_0]
+delete_bd_objs [get_bd_cells xlconstant_1]
+set_property location {0.5 26 220} [get_bd_cells qdma_0]
+delete_bd_objs [get_bd_nets xlconstant_1_dout]
+set_property location {114 802} [get_bd_ports hbm_clk_n]
+undo
+delete_bd_objs [get_bd_intf_nets qdma_0_pcie_mgt]
+delete_bd_objs [get_bd_nets qdma_0_axi_aclk]
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/aclk]
+endgroup
+set_property location {185 60} [get_bd_ports aclk_0]
+set_property location {199 66} [get_bd_ports aclk_0]
+set_property location {225 -89} [get_bd_ports aclk_0]
+set_property location {198 -21} [get_bd_ports aclk_0]
+set_property location {186 -12} [get_bd_ports aclk_0]
+set_property location {342 84} [get_bd_ports aclk_0]
+delete_bd_objs [get_bd_nets aclk_0_1] [get_bd_ports aclk_0]
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/aclk]
+endgroup
+connect_bd_net [get_bd_ports aclk_0] [get_bd_pins hbm_0/AXI_15_ACLK]
+connect_bd_net [get_bd_ports aclk_0] [get_bd_pins hbm_0/AXI_16_ACLK]
+delete_bd_objs [get_bd_nets qdma_0_axi_aresetn]
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/aresetn]
+endgroup
+connect_bd_net [get_bd_ports aresetn_0] [get_bd_pins hbm_0/AXI_15_ARESET_N]
+connect_bd_net [get_bd_ports aresetn_0] [get_bd_pins hbm_0/AXI_16_ARESET_N]
+delete_bd_objs [get_bd_nets sys_clk_0_1] [get_bd_nets sys_clk_gt_0_1] [get_bd_intf_nets qdma_0_M_AXI] [get_bd_cells qdma_0]
+startgroup
+make_bd_intf_pins_external  [get_bd_intf_pins smartconnect_0/S00_AXI]
+endgroup
+delete_bd_objs [get_bd_intf_nets S00_AXI_0_1]
+set_property location {0.5 -941 417} [get_bd_cells smartconnect_0]
+set_property location {1.5 -94 275} [get_bd_cells smartconnect_0]
+delete_bd_objs [get_bd_ports qdma_clk_gt]
+delete_bd_objs [get_bd_ports qdma_clk]
+delete_bd_objs [get_bd_intf_ports S00_AXI_0]
+set_property location {-1177 139} [get_bd_ports aclk_0]
+set_property location {-1169 514} [get_bd_ports aclk_0]
+set_property location {-1201 436} [get_bd_ports aresetn_0]
+set_property location {2.5 477 -37} [get_bd_cells hbm_0]
+set_property location {1 -327 824} [get_bd_cells clk_wiz_0]
+set_property location {2 425 793} [get_bd_cells proc_sys_reset_0]
+set_property location {1.5 211 784} [get_bd_cells proc_sys_reset_0]
+set_property location {-1181 780} [get_bd_ports aresetn]
+set_property location {-1185 757} [get_bd_ports aclk_0]
+set_property location {-1188 735} [get_bd_ports aresetn_0]
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awid]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awaddr]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awlen]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awsize]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awburst]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awlock]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awcache]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awprot]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awqos]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awuser]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awvalid]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awready]
+endgroup
+set_property location {-1285 143} [get_bd_ports S00_AXI_awready_0]
+set_property location {-1181 125} [get_bd_ports S00_AXI_awready_0]
+set_property location {-1195 89} [get_bd_ports S00_AXI_awready_0]
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_wdata]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_wstrb]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_wlast]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_wuser]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_wvalid]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_wready]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_bid]
+endgroup
+delete_bd_objs [get_bd_intf_ports pci_express_x16]
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_bresp]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_bvalid]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_bready]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arid]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_araddr]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arlen]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arsize]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arburst]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arlock]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arcache]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arprot]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arqos]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_aruser]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arvalid]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arready]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_rid]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_rdata]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_rresp]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_rlast]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_rvalid]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_rready]
+endgroup
+save_bd_design
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+remove_files  -fileset sim_1 /home/khanna/HBM/PCIe-HBM_basic-prj/src/qdma_tb.sv
+update_compile_order -fileset sim_1
+ipx::package_project -root_dir /home/khanna/HBM/ip_repo -vendor user.org -library user -taxonomy /UserIP -module qdma_hbm_bd -import_files
+ipx::unload_core /home/khanna/HBM/ip_repo/component.xml
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+set_property  ip_repo_paths  /home/khanna/HBM/ip_repo [current_project]
+update_ip_catalog
+create_bd_cell -type ip -vlnv user.org:user:qdma_hbm_bd:1.0 qdma_hbm_bd_0
+set_property location {0.5 -2010 297} [get_bd_cells qdma_hbm_bd_0]
+set_property location {1.5 -1167 888} [get_bd_cells qdma_hbm_bd_0]
+save_bd_design

@@ -1,0 +1,581 @@
+
+*** Running vivado
+    with args -log qdma_hbm_bd_hbm_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source qdma_hbm_bd_hbm_0_0.tcl
+
+
+****** Vivado v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Wed Mar 26 16:46:19 2025
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source qdma_hbm_bd_hbm_0_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1485.641 ; gain = 48.836 ; free physical = 29315 ; free virtual = 54615
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: qdma_hbm_bd_hbm_0_0
+Command: synth_design -top qdma_hbm_bd_hbm_0_0 -part xcu55c-fsvh2892-2L-e -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xcu55c'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xcu55c'
+INFO: [Device 21-403] Loading part xcu55c-fsvh2892-2L-e
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 1328580
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 3165.988 ; gain = 265.641 ; free physical = 25411 ; free virtual = 50710
+---------------------------------------------------------------------------------
+INFO: [Synth 8-11241] undeclared symbol 'xsdb_apb_grant_0_s', assumed default net type 'wire' [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:2411]
+INFO: [Synth 8-11241] undeclared symbol 'gen_apb_wr_rd_0', assumed default net type 'wire' [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:3814]
+INFO: [Synth 8-11241] undeclared symbol 'xsdb_apb_grant_0_s', assumed default net type 'wire' [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:3968]
+INFO: [Synth 8-11241] undeclared symbol 'gen_apb_wr_rd_1', assumed default net type 'wire' [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:4067]
+INFO: [Synth 8-11241] undeclared symbol 'xsdb_apb_grant_1_s', assumed default net type 'wire' [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:4220]
+INFO: [Synth 8-6157] synthesizing module 'qdma_hbm_bd_hbm_0_0' [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/synth/qdma_hbm_bd_hbm_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'hbm_v1_0_16' [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:65]
+INFO: [Synth 8-6157] synthesizing module 'IBUF' [/work_extra/tools/Xilinx/Vivado/2024.2/scripts/rt/data/unisim_comp.v:75825]
+INFO: [Synth 8-6155] done synthesizing module 'IBUF' (0#1) [/work_extra/tools/Xilinx/Vivado/2024.2/scripts/rt/data/unisim_comp.v:75825]
+INFO: [Synth 8-6157] synthesizing module 'BUFG' [/work_extra/tools/Xilinx/Vivado/2024.2/scripts/rt/data/unisim_comp.v:2676]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (0#1) [/work_extra/tools/Xilinx/Vivado/2024.2/scripts/rt/data/unisim_comp.v:2676]
+INFO: [Synth 8-6157] synthesizing module 'hbm_top' [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:81]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_spram' [/work_extra/tools/Xilinx/Vivado/2024.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8732]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base' [/work_extra/tools/Xilinx/Vivado/2024.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6059] Synth Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value.   [/work_extra/tools/Xilinx/Vivado/2024.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:514]
+INFO: [Synth 8-3876] $readmem data file 'xpm_internal_config_file_0.mem' is read successfully [/work_extra/tools/Xilinx/Vivado/2024.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:1201]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base' (0#1) [/work_extra/tools/Xilinx/Vivado/2024.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_spram' (0#1) [/work_extra/tools/Xilinx/Vivado/2024.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8732]
+INFO: [Synth 8-6157] synthesizing module 'hbm_data_fetch' [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:8185]
+INFO: [Synth 8-6155] done synthesizing module 'hbm_data_fetch' (0#1) [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:8185]
+INFO: [Synth 8-6157] synthesizing module 'hbm_apb_mst' [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:6820]
+INFO: [Synth 8-6155] done synthesizing module 'hbm_apb_mst' (0#1) [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:6820]
+INFO: [Synth 8-6157] synthesizing module 'hbm_temp_rd' [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:7336]
+INFO: [Synth 8-6155] done synthesizing module 'hbm_temp_rd' (0#1) [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:7336]
+INFO: [Synth 8-6157] synthesizing module 'hbm_apb_arbiter' [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:7829]
+INFO: [Synth 8-226] default block is never used [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:7981]
+INFO: [Synth 8-6155] done synthesizing module 'hbm_apb_arbiter' (0#1) [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:7829]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_spram__parameterized0' [/work_extra/tools/Xilinx/Vivado/2024.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8732]
+INFO: [Synth 8-6157] synthesizing module 'xpm_memory_base__parameterized0' [/work_extra/tools/Xilinx/Vivado/2024.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6059] Synth Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value.   [/work_extra/tools/Xilinx/Vivado/2024.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:514]
+INFO: [Synth 8-3876] $readmem data file 'xpm_internal_config_file_1.mem' is read successfully [/work_extra/tools/Xilinx/Vivado/2024.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:1201]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_base__parameterized0' (0#1) [/work_extra/tools/Xilinx/Vivado/2024.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:54]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_memory_spram__parameterized0' (0#1) [/work_extra/tools/Xilinx/Vivado/2024.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:8732]
+INFO: [Synth 8-6157] synthesizing module 'HBM_TWO_STACK_INTF' [/work_extra/tools/Xilinx/Vivado/2024.2/scripts/rt/data/unisim_comp.v:68254]
+INFO: [Synth 8-6155] done synthesizing module 'HBM_TWO_STACK_INTF' (0#1) [/work_extra/tools/Xilinx/Vivado/2024.2/scripts/rt/data/unisim_comp.v:68254]
+INFO: [Synth 8-6155] done synthesizing module 'hbm_top' (0#1) [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:81]
+INFO: [Synth 8-6155] done synthesizing module 'hbm_v1_0_16' (0#1) [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:65]
+INFO: [Synth 8-6155] done synthesizing module 'qdma_hbm_bd_hbm_0_0' (0#1) [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/synth/qdma_hbm_bd_hbm_0_0.v:53]
+WARNING: [Synth 8-6014] Unused sequential element stall_rd_r_reg was removed.  [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:8377]
+WARNING: [Synth 8-6014] Unused sequential element gen_apb_tran_r_reg was removed.  [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:8391]
+WARNING: [Synth 8-6014] Unused sequential element gen_apb_wr_rd_r_reg was removed.  [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:8392]
+WARNING: [Synth 8-6014] Unused sequential element gen_apb_addr_r_reg was removed.  [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:8406]
+WARNING: [Synth 8-6014] Unused sequential element gen_apb_data_r_reg was removed.  [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ipshared/7b8c/hdl/hbm_v1_0_vl_rfs.sv:8407]
+WARNING: [Synth 8-3848] Net dfi_0_dw_rddata_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1945]
+WARNING: [Synth 8-3848] Net dfi_0_dw_rddata_dm_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1946]
+WARNING: [Synth 8-3848] Net dfi_0_dw_rddata_dbi_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1947]
+WARNING: [Synth 8-3848] Net dfi_0_dw_rddata_par_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1948]
+WARNING: [Synth 8-3848] Net dfi_0_dw_rddata_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1949]
+WARNING: [Synth 8-3848] Net dfi_0_dw_rddata_dm_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1950]
+WARNING: [Synth 8-3848] Net dfi_0_dw_rddata_dbi_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1951]
+WARNING: [Synth 8-3848] Net dfi_0_dw_rddata_par_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1952]
+WARNING: [Synth 8-3848] Net dfi_0_dbi_byte_disable in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1953]
+WARNING: [Synth 8-3848] Net dfi_0_dw_rddata_valid in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1954]
+WARNING: [Synth 8-3848] Net dfi_0_dw_derr_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1955]
+WARNING: [Synth 8-3848] Net dfi_0_aw_aerr_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1956]
+WARNING: [Synth 8-3848] Net dfi_0_ctrlupd_req in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1957]
+WARNING: [Synth 8-3848] Net dfi_0_phyupd_ack in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1958]
+WARNING: [Synth 8-3848] Net dfi_0_clk_init in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1959]
+WARNING: [Synth 8-3848] Net dfi_0_init_complete in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1960]
+WARNING: [Synth 8-3848] Net dfi_0_out_rst_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1961]
+WARNING: [Synth 8-3848] Net dfi_1_dw_rddata_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1963]
+WARNING: [Synth 8-3848] Net dfi_1_dw_rddata_dm_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1964]
+WARNING: [Synth 8-3848] Net dfi_1_dw_rddata_dbi_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1965]
+WARNING: [Synth 8-3848] Net dfi_1_dw_rddata_par_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1966]
+WARNING: [Synth 8-3848] Net dfi_1_dw_rddata_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1967]
+WARNING: [Synth 8-3848] Net dfi_1_dw_rddata_dm_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1968]
+WARNING: [Synth 8-3848] Net dfi_1_dw_rddata_dbi_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1969]
+WARNING: [Synth 8-3848] Net dfi_1_dw_rddata_par_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1970]
+WARNING: [Synth 8-3848] Net dfi_1_dbi_byte_disable in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1971]
+WARNING: [Synth 8-3848] Net dfi_1_dw_rddata_valid in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1972]
+WARNING: [Synth 8-3848] Net dfi_1_dw_derr_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1973]
+WARNING: [Synth 8-3848] Net dfi_1_aw_aerr_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1974]
+WARNING: [Synth 8-3848] Net dfi_1_ctrlupd_req in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1975]
+WARNING: [Synth 8-3848] Net dfi_1_phyupd_ack in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1976]
+WARNING: [Synth 8-3848] Net dfi_1_clk_init in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1977]
+WARNING: [Synth 8-3848] Net dfi_1_init_complete in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1978]
+WARNING: [Synth 8-3848] Net dfi_1_out_rst_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1979]
+WARNING: [Synth 8-3848] Net dfi_2_dw_rddata_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1981]
+WARNING: [Synth 8-3848] Net dfi_2_dw_rddata_dm_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1982]
+WARNING: [Synth 8-3848] Net dfi_2_dw_rddata_dbi_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1983]
+WARNING: [Synth 8-3848] Net dfi_2_dw_rddata_par_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1984]
+WARNING: [Synth 8-3848] Net dfi_2_dw_rddata_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1985]
+WARNING: [Synth 8-3848] Net dfi_2_dw_rddata_dm_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1986]
+WARNING: [Synth 8-3848] Net dfi_2_dw_rddata_dbi_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1987]
+WARNING: [Synth 8-3848] Net dfi_2_dw_rddata_par_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1988]
+WARNING: [Synth 8-3848] Net dfi_2_dbi_byte_disable in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1989]
+WARNING: [Synth 8-3848] Net dfi_2_dw_rddata_valid in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1990]
+WARNING: [Synth 8-3848] Net dfi_2_dw_derr_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1991]
+WARNING: [Synth 8-3848] Net dfi_2_aw_aerr_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1992]
+WARNING: [Synth 8-3848] Net dfi_2_ctrlupd_req in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1993]
+WARNING: [Synth 8-3848] Net dfi_2_phyupd_ack in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1994]
+WARNING: [Synth 8-3848] Net dfi_2_clk_init in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1995]
+WARNING: [Synth 8-3848] Net dfi_2_init_complete in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1996]
+WARNING: [Synth 8-3848] Net dfi_2_out_rst_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1997]
+WARNING: [Synth 8-3848] Net dfi_3_dw_rddata_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:1999]
+WARNING: [Synth 8-3848] Net dfi_3_dw_rddata_dm_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2000]
+WARNING: [Synth 8-3848] Net dfi_3_dw_rddata_dbi_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2001]
+WARNING: [Synth 8-3848] Net dfi_3_dw_rddata_par_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2002]
+WARNING: [Synth 8-3848] Net dfi_3_dw_rddata_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2003]
+WARNING: [Synth 8-3848] Net dfi_3_dw_rddata_dm_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2004]
+WARNING: [Synth 8-3848] Net dfi_3_dw_rddata_dbi_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2005]
+WARNING: [Synth 8-3848] Net dfi_3_dw_rddata_par_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2006]
+WARNING: [Synth 8-3848] Net dfi_3_dbi_byte_disable in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2007]
+WARNING: [Synth 8-3848] Net dfi_3_dw_rddata_valid in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2008]
+WARNING: [Synth 8-3848] Net dfi_3_dw_derr_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2009]
+WARNING: [Synth 8-3848] Net dfi_3_aw_aerr_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2010]
+WARNING: [Synth 8-3848] Net dfi_3_ctrlupd_req in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2011]
+WARNING: [Synth 8-3848] Net dfi_3_phyupd_ack in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2012]
+WARNING: [Synth 8-3848] Net dfi_3_clk_init in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2013]
+WARNING: [Synth 8-3848] Net dfi_3_init_complete in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2014]
+WARNING: [Synth 8-3848] Net dfi_3_out_rst_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2015]
+WARNING: [Synth 8-3848] Net dfi_4_dw_rddata_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2017]
+WARNING: [Synth 8-3848] Net dfi_4_dw_rddata_dm_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2018]
+WARNING: [Synth 8-3848] Net dfi_4_dw_rddata_dbi_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2019]
+WARNING: [Synth 8-3848] Net dfi_4_dw_rddata_par_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2020]
+WARNING: [Synth 8-3848] Net dfi_4_dw_rddata_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2021]
+WARNING: [Synth 8-3848] Net dfi_4_dw_rddata_dm_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2022]
+WARNING: [Synth 8-3848] Net dfi_4_dw_rddata_dbi_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2023]
+WARNING: [Synth 8-3848] Net dfi_4_dw_rddata_par_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2024]
+WARNING: [Synth 8-3848] Net dfi_4_dbi_byte_disable in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2025]
+WARNING: [Synth 8-3848] Net dfi_4_dw_rddata_valid in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2026]
+WARNING: [Synth 8-3848] Net dfi_4_dw_derr_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2027]
+WARNING: [Synth 8-3848] Net dfi_4_aw_aerr_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2028]
+WARNING: [Synth 8-3848] Net dfi_4_ctrlupd_req in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2029]
+WARNING: [Synth 8-3848] Net dfi_4_phyupd_ack in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2030]
+WARNING: [Synth 8-3848] Net dfi_4_clk_init in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2031]
+WARNING: [Synth 8-3848] Net dfi_4_init_complete in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2032]
+WARNING: [Synth 8-3848] Net dfi_4_out_rst_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2033]
+WARNING: [Synth 8-3848] Net dfi_5_dw_rddata_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2035]
+WARNING: [Synth 8-3848] Net dfi_5_dw_rddata_dm_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2036]
+WARNING: [Synth 8-3848] Net dfi_5_dw_rddata_dbi_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2037]
+WARNING: [Synth 8-3848] Net dfi_5_dw_rddata_par_p0 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2038]
+WARNING: [Synth 8-3848] Net dfi_5_dw_rddata_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2039]
+WARNING: [Synth 8-3848] Net dfi_5_dw_rddata_dm_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2040]
+WARNING: [Synth 8-3848] Net dfi_5_dw_rddata_dbi_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2041]
+WARNING: [Synth 8-3848] Net dfi_5_dw_rddata_par_p1 in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2042]
+WARNING: [Synth 8-3848] Net dfi_5_dbi_byte_disable in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2043]
+WARNING: [Synth 8-3848] Net dfi_5_dw_rddata_valid in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2044]
+WARNING: [Synth 8-3848] Net dfi_5_dw_derr_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2045]
+WARNING: [Synth 8-3848] Net dfi_5_aw_aerr_n in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2046]
+WARNING: [Synth 8-3848] Net dfi_5_ctrlupd_req in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2047]
+WARNING: [Synth 8-3848] Net dfi_5_phyupd_ack in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2048]
+WARNING: [Synth 8-3848] Net dfi_5_clk_init in module/entity hbm_v1_0_16 does not have driver. [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/rtl/hbm_v1_0_16.sv:2049]
+INFO: [Common 17-14] Message 'Synth 8-3848' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-7129] Port pslverr in module hbm_temp_rd is either unconnected or has no load
+WARNING: [Synth 8-7129] Port pslverr in module hbm_apb_mst is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sleep in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port regcea in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port injectsbiterra in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port injectdbiterra in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clkb in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rstb in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port enb in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port regceb in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port web[0] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[10] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[9] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[8] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[7] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[6] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[5] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[4] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[3] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[2] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[1] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[0] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[31] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[30] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[29] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[28] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[27] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[26] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[25] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[24] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[23] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[22] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[21] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[20] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[19] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[18] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[17] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[16] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[15] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[14] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[13] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[12] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[11] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[10] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[9] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[8] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[7] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[6] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[5] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[4] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[3] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[2] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[1] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dinb[0] in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port injectsbiterrb in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port injectdbiterrb in module xpm_memory_base is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[255] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[254] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[253] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[252] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[251] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[250] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[249] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[248] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[247] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[246] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[245] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[244] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[243] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[242] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[241] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[240] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[239] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[238] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[237] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[236] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[235] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[234] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[233] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[232] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[231] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[230] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[229] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[228] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[227] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[226] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[225] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[224] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[223] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[222] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[221] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[220] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[219] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[218] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[217] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[216] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[215] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[214] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[213] in module hbm_v1_0_16 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dfi_0_dw_rddata_p0[212] in module hbm_v1_0_16 is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 3274.566 ; gain = 374.219 ; free physical = 25194 ; free virtual = 50495
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 3280.504 ; gain = 380.156 ; free physical = 25186 ; free virtual = 50487
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 3280.504 ; gain = 380.156 ; free physical = 25186 ; free virtual = 50487
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.12 ; elapsed = 00:00:00.12 . Memory (MB): peak = 3288.504 ; gain = 0.000 ; free physical = 25146 ; free virtual = 50447
+INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/par/qdma_hbm_bd_hbm_0_0_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/par/qdma_hbm_bd_hbm_0_0_ooc.xdc] for cell 'inst'
+Parsing XDC File [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/par/hbm_ip.xdc] for cell 'inst'
+Finished Parsing XDC File [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_hbm_0_0/hdl/par/hbm_ip.xdc] for cell 'inst'
+Parsing XDC File [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.runs/qdma_hbm_bd_hbm_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.runs/qdma_hbm_bd_hbm_0_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3469.113 ; gain = 0.000 ; free physical = 25067 ; free virtual = 50372
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 5 instances were transformed.
+  BUFG => BUFGCE: 2 instances
+  HBM_TWO_STACK_INTF => HBM_TWO_STACK_INTF (HBM_REF_CLK(x2), HBM_SNGLBLI_INTF_APB(x2), HBM_SNGLBLI_INTF_AXI(x32)): 1 instance 
+  IBUF => IBUF (IBUFCTRL, INBUF): 2 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3472.082 ; gain = 2.969 ; free physical = 25066 ; free virtual = 50372
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 3472.082 ; gain = 571.734 ; free physical = 24973 ; free virtual = 50279
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xcu55c-fsvh2892-2L-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 3480.086 ; gain = 579.738 ; free physical = 24973 ; free virtual = 50279
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for inst. (constraint file  /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.runs/qdma_hbm_bd_hbm_0_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 3480.086 ; gain = 579.738 ; free physical = 24973 ; free virtual = 50279
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'curr_state_reg' in module 'hbm_apb_mst'
+INFO: [Synth 8-802] inferred FSM for state register 'main_fsm_curr_state_reg' in module 'hbm_temp_rd'
+INFO: [Synth 8-802] inferred FSM for state register 'apb_fsm_curr_state_reg' in module 'hbm_temp_rd'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                  C_IDLE |                              001 |                              001
+                 C_SETUP |                              010 |                              010
+                C_ACCESS |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'curr_state_reg' in module 'hbm_apb_mst'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+              C_APB_IDLE |                              001 |                              001
+             C_APB_SETUP |                              010 |                              010
+            C_APB_ACCESS |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'apb_fsm_curr_state_reg' in module 'hbm_temp_rd'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+*
+                  C_IDLE |                           000001 |                           000001
+           C_WAIT_INTRVL |                           000010 |                           000010
+           C_APB_ACC_REQ |                           000100 |                           000100
+     C_SEND_TEMP_ACC_CMD |                           001000 |                           001000
+  C_POLL_TEMP_ACC_CMD_ST |                           010000 |                           010000
+             C_READ_TEMP |                           100000 |                           100000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3898] No Re-encoding of one hot register 'main_fsm_curr_state_reg' in module 'hbm_temp_rd'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 3480.086 ; gain = 579.738 ; free physical = 24963 ; free virtual = 50270
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   11 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 4     
++---Registers : 
+	               32 Bit    Registers := 20    
+	               22 Bit    Registers := 18    
+	               11 Bit    Registers := 2     
+	                7 Bit    Registers := 2     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 76    
++---RAMs : 
+	              64K Bit	(2048 X 32 bit)          RAMs := 2     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 30    
+	   4 Input   32 Bit        Muxes := 2     
+	   5 Input   24 Bit        Muxes := 2     
+	   2 Input   22 Bit        Muxes := 22    
+	   5 Input   22 Bit        Muxes := 2     
+	   4 Input   22 Bit        Muxes := 2     
+	   2 Input    7 Bit        Muxes := 3     
+	   2 Input    6 Bit        Muxes := 8     
+	   7 Input    6 Bit        Muxes := 4     
+	   2 Input    5 Bit        Muxes := 4     
+	   2 Input    4 Bit        Muxes := 4     
+	   5 Input    3 Bit        Muxes := 4     
+	   4 Input    3 Bit        Muxes := 8     
+	   2 Input    3 Bit        Muxes := 18    
+	   2 Input    2 Bit        Muxes := 16    
+	   5 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 156   
+	   5 Input    1 Bit        Muxes := 2     
+	   4 Input    1 Bit        Muxes := 12    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 9024 (col length:94)
+BRAMs: 4032 (col length: RAMB18 288 RAMB36 144)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 3480.086 ; gain = 579.738 ; free physical = 24656 ; free virtual = 49964
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++-----------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name      | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++-----------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|xpm_memory_base: | gen_wr_a.gen_word_narrow.mem_reg | 2 K x 32(READ_FIRST)   | W | R |                        |   |   | Port A           | 0      | 2      | 1,1             | 
+|xpm_memory_base: | gen_wr_a.gen_word_narrow.mem_reg | 2 K x 32(READ_FIRST)   | W | R |                        |   |   | Port A           | 0      | 2      | 1,1             | 
++-----------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:29 . Memory (MB): peak = 3931.816 ; gain = 1031.469 ; free physical = 24127 ; free virtual = 49435
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 3973.824 ; gain = 1073.477 ; free physical = 24080 ; free virtual = 49388
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++-----------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name      | RTL Object                       | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++-----------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|xpm_memory_base: | gen_wr_a.gen_word_narrow.mem_reg | 2 K x 32(READ_FIRST)   | W | R |                        |   |   | Port A           | 0      | 2      | 1,1             | 
+|xpm_memory_base: | gen_wr_a.gen_word_narrow.mem_reg | 2 K x 32(READ_FIRST)   | W | R |                        |   |   | Port A           | 0      | 2      | 1,1             | 
++-----------------+----------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance inst/TWO_STACK.u_hbm_top/TWO_STACK_HBM.xpm_memory_spram_inst_0/xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/TWO_STACK.u_hbm_top/TWO_STACK_HBM.xpm_memory_spram_inst_0/xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/TWO_STACK.u_hbm_top/TWO_STACK_HBM.xpm_memory_spram_inst_1/xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance inst/TWO_STACK.u_hbm_top/TWO_STACK_HBM.xpm_memory_spram_inst_1/xpm_memory_base_inst/gen_wr_a.gen_word_narrow.mem_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:18 ; elapsed = 00:01:19 . Memory (MB): peak = 4014.855 ; gain = 1114.508 ; free physical = 24058 ; free virtual = 49372
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:33 ; elapsed = 00:01:33 . Memory (MB): peak = 4133.668 ; gain = 1233.320 ; free physical = 23755 ; free virtual = 49070
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:33 ; elapsed = 00:01:33 . Memory (MB): peak = 4133.668 ; gain = 1233.320 ; free physical = 23755 ; free virtual = 49070
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:33 ; elapsed = 00:01:33 . Memory (MB): peak = 4133.668 ; gain = 1233.320 ; free physical = 23740 ; free virtual = 49054
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:33 ; elapsed = 00:01:33 . Memory (MB): peak = 4133.668 ; gain = 1233.320 ; free physical = 23740 ; free virtual = 49054
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:33 ; elapsed = 00:01:34 . Memory (MB): peak = 4133.668 ; gain = 1233.320 ; free physical = 23740 ; free virtual = 49054
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:33 ; elapsed = 00:01:34 . Memory (MB): peak = 4133.668 ; gain = 1233.320 ; free physical = 23740 ; free virtual = 49054
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------------------+------+
+|      |Cell               |Count |
++------+-------------------+------+
+|1     |BUFG               |     2|
+|2     |CARRY8             |    22|
+|3     |HBM_TWO_STACK_INTF |     1|
+|4     |LUT1               |    42|
+|5     |LUT2               |   268|
+|6     |LUT3               |   118|
+|7     |LUT4               |   278|
+|8     |LUT5               |   338|
+|9     |LUT6               |   249|
+|10    |RAMB36E2           |     4|
+|12    |FDCE               |   844|
+|13    |FDPE               |     6|
+|14    |FDRE               |    24|
+|15    |IBUF               |     2|
++------+-------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:33 ; elapsed = 00:01:34 . Memory (MB): peak = 4133.668 ; gain = 1233.320 ; free physical = 23740 ; free virtual = 49054
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 23707 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:26 ; elapsed = 00:01:26 . Memory (MB): peak = 4133.668 ; gain = 1041.742 ; free physical = 23732 ; free virtual = 49046
+Synthesis Optimization Complete : Time (s): cpu = 00:01:33 ; elapsed = 00:01:34 . Memory (MB): peak = 4133.668 ; gain = 1233.320 ; free physical = 23732 ; free virtual = 49046
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.11 ; elapsed = 00:00:00.12 . Memory (MB): peak = 4133.668 ; gain = 0.000 ; free physical = 23901 ; free virtual = 49216
+INFO: [Netlist 29-17] Analyzing 27 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4161.957 ; gain = 0.000 ; free physical = 23904 ; free virtual = 49218
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 5 instances were transformed.
+  BUFG => BUFGCE: 2 instances
+  HBM_TWO_STACK_INTF => HBM_TWO_STACK_INTF (HBM_REF_CLK(x2), HBM_SNGLBLI_INTF_APB(x2), HBM_SNGLBLI_INTF_AXI(x32)): 1 instance 
+  IBUF => IBUF (IBUFCTRL, INBUF): 2 instances
+
+Synth Design complete | Checksum: 9d38e59c
+INFO: [Common 17-83] Releasing license: Synthesis
+69 Infos, 206 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:44 ; elapsed = 00:01:42 . Memory (MB): peak = 4161.957 ; gain = 2599.285 ; free physical = 23904 ; free virtual = 49218
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 3262.588; main = 3173.479; forked = 216.521
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 4930.660; main = 4161.961; forked = 915.801
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4185.969 ; gain = 0.000 ; free physical = 23904 ; free virtual = 49218
+INFO: [Common 17-1381] The checkpoint '/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.runs/qdma_hbm_bd_hbm_0_0_synth_1/qdma_hbm_bd_hbm_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP qdma_hbm_bd_hbm_0_0, cache-ID = 998bc3092456ddc4
+INFO: [Coretcl 2-1174] Renamed 14 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4185.969 ; gain = 0.000 ; free physical = 23754 ; free virtual = 49076
+INFO: [Common 17-1381] The checkpoint '/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.runs/qdma_hbm_bd_hbm_0_0_synth_1/qdma_hbm_bd_hbm_0_0.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file qdma_hbm_bd_hbm_0_0_utilization_synth.rpt -pb qdma_hbm_bd_hbm_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 26 16:48:18 2025...

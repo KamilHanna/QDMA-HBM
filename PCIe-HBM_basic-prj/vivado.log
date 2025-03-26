@@ -1,0 +1,939 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Wed Mar 26 15:47:00 2025
+# Process ID         : 1305031
+# Current directory  : /home/khanna/HBM/PCIe-HBM_basic-prj
+# Command line       : vivado -mode batch -source ./tcl/gen_sim_prj.tcl
+# Log file           : /home/khanna/HBM/PCIe-HBM_basic-prj/vivado.log
+# Journal file       : /home/khanna/HBM/PCIe-HBM_basic-prj/vivado.jou
+# Running On         : ogreOptiPlex
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 22.04.5 LTS
+# Processor Detail   : Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz
+# CPU Frequency      : 4705.725 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 67123 MB
+# Swap memory        : 2147 MB
+# Total Virtual      : 69271 MB
+# Available Virtual  : 61093 MB
+#-----------------------------------------------------------
+source ./tcl/gen_sim_prj.tcl
+# set questa_libraries_path "/eda/vivado-compiled-libraries/Questa/Vivado_2024.2-Questa_2023.4"
+# set prj_name "pcie-hbm_sim"
+# file mkdir vivado_gen
+# cd vivado_gen
+# file mkdir $prj_name
+# cd $prj_name
+# create_project -part xcu55c-fsvh2892-2L-e -name $prj_name -force
+# set_property board_part xilinx.com:au55c:part0:1.0 [current_project]
+# set_property target_simulator Questa [current_project]
+# set_property compxlib.questa_compiled_library_dir $questa_libraries_path [current_project]
+# set_property -name {questa.compile.vlog.more_options}  -value {+notimingchecks -suppress 8602} -objects [get_filesets sim_1]
+# set_property -name {questa.simulate.vsim.more_options} -value "+notimingchecks -onfinish final +suppress_meta_disp" -objects [get_filesets sim_1]
+# set_property -name {questa.simulate.runtime} -value {1000us} -objects [get_filesets sim_1]
+# cd ../..
+# set file_path "flist/flist_sim.txt"
+# set file_id [open $file_path r]
+# while {[gets $file_id line] >= 0} {
+#     # Run the command to add files without recursion
+#     add_files -norecurse $line -fileset sim_1
+# }
+# close $file_id
+# set_property include_dirs "src/include" [get_filesets sim_1]
+# source "tcl/gen_qdma_hbm_bd.tcl"
+## namespace eval _tcl {
+## proc get_script_folder {} {
+##    set script_path [file normalize [info script]]
+##    set script_folder [file dirname $script_path]
+##    return $script_folder
+## }
+## }
+## variable script_folder
+## set script_folder [_tcl::get_script_folder]
+## set scripts_vivado_version 2024.2
+## set current_vivado_version [version -short]
+## if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
+##    puts ""
+##    if { [string compare $scripts_vivado_version $current_vivado_version] > 0 } {
+##       catch {common::send_gid_msg -ssname BD::TCL -id 2042 -severity "ERROR" " This script was generated using Vivado <$scripts_vivado_version> and is being run in <$current_vivado_version> of Vivado. Sourcing the script failed since it was created with a future version of Vivado."}
+## 
+##    } else {
+##      catch {common::send_gid_msg -ssname BD::TCL -id 2041 -severity "ERROR" "This script was generated using Vivado <$scripts_vivado_version> and is being run in <$current_vivado_version> of Vivado. Please run the script in Vivado <$scripts_vivado_version> then open the design in Vivado <$current_vivado_version>. Upgrade the design by running \"Tools => Report => Report IP Status...\", then run write_bd_tcl to create an updated script."}
+## 
+##    }
+## 
+##    return 1
+## }
+## set list_projs [get_projects -quiet]
+## if { $list_projs eq "" } {
+##    create_project project_1 myproj -part xcu55c-fsvh2892-2L-e
+##    set_property BOARD_PART xilinx.com:au55c:part0:1.0 [current_project]
+## }
+## variable design_name
+## set design_name qdma_hbm_bd
+## set errMsg ""
+## set nRet 0
+## set cur_design [current_bd_design -quiet]
+## set list_cells [get_bd_cells -quiet]
+## if { ${design_name} eq "" } {
+##    # USE CASES:
+##    #    1) Design_name not set
+## 
+##    set errMsg "Please set the variable <design_name> to a non-empty value."
+##    set nRet 1
+## 
+## } elseif { ${cur_design} ne "" && ${list_cells} eq "" } {
+##    # USE CASES:
+##    #    2): Current design opened AND is empty AND names same.
+##    #    3): Current design opened AND is empty AND names diff; design_name NOT in project.
+##    #    4): Current design opened AND is empty AND names diff; design_name exists in project.
+## 
+##    if { $cur_design ne $design_name } {
+##       common::send_gid_msg -ssname BD::TCL -id 2001 -severity "INFO" "Changing value of <design_name> from <$design_name> to <$cur_design> since current design is empty."
+##       set design_name [get_property NAME $cur_design]
+##    }
+##    common::send_gid_msg -ssname BD::TCL -id 2002 -severity "INFO" "Constructing design in IPI design <$cur_design>..."
+## 
+## } elseif { ${cur_design} ne "" && $list_cells ne "" && $cur_design eq $design_name } {
+##    # USE CASES:
+##    #    5) Current design opened AND has components AND same names.
+## 
+##    set errMsg "Design <$design_name> already exists in your project, please set the variable <design_name> to another value."
+##    set nRet 1
+## } elseif { [get_files -quiet ${design_name}.bd] ne "" } {
+##    # USE CASES: 
+##    #    6) Current opened design, has components, but diff names, design_name exists in project.
+##    #    7) No opened design, design_name exists in project.
+## 
+##    set errMsg "Design <$design_name> already exists in your project, please set the variable <design_name> to another value."
+##    set nRet 2
+## 
+## } else {
+##    # USE CASES:
+##    #    8) No opened design, design_name not in project.
+##    #    9) Current opened design, has components, but diff names, design_name not in project.
+## 
+##    common::send_gid_msg -ssname BD::TCL -id 2003 -severity "INFO" "Currently there is no design <$design_name> in project, so creating one..."
+## 
+##    create_bd_design $design_name
+## 
+##    common::send_gid_msg -ssname BD::TCL -id 2004 -severity "INFO" "Making design <$design_name> as current_bd_design."
+##    current_bd_design $design_name
+## 
+## }
+INFO: [BD::TCL 103-2003] Currently there is no design <qdma_hbm_bd> in project, so creating one...
+Wrote  : </home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd> 
+INFO: [BD::TCL 103-2004] Making design <qdma_hbm_bd> as current_bd_design.
+## common::send_gid_msg -ssname BD::TCL -id 2005 -severity "INFO" "Currently the variable <design_name> is equal to \"$design_name\"."
+INFO: [BD::TCL 103-2005] Currently the variable <design_name> is equal to "qdma_hbm_bd".
+## if { $nRet != 0 } {
+##    catch {common::send_gid_msg -ssname BD::TCL -id 2006 -severity "ERROR" $errMsg}
+##    return $nRet
+## }
+## set bCheckIPsPassed 1
+## set bCheckIPs 1
+## if { $bCheckIPs == 1 } {
+##    set list_check_ips "\ 
+## xilinx.com:ip:hbm:1.0\
+## xilinx.com:ip:smartconnect:1.0\
+## xilinx.com:ip:clk_wiz:6.0\
+## xilinx.com:ip:proc_sys_reset:5.0\
+## xilinx.com:ip:qdma:5.0\
+## xilinx.com:ip:blk_mem_gen:8.4\
+## xilinx.com:ip:axi_bram_ctrl:4.1\
+## xilinx.com:ip:xlconstant:1.1\
+## "
+## 
+##    set list_ips_missing ""
+##    common::send_gid_msg -ssname BD::TCL -id 2011 -severity "INFO" "Checking if the following IPs exist in the project's IP catalog: $list_check_ips ."
+## 
+##    foreach ip_vlnv $list_check_ips {
+##       set ip_obj [get_ipdefs -all $ip_vlnv]
+##       if { $ip_obj eq "" } {
+##          lappend list_ips_missing $ip_vlnv
+##       }
+##    }
+## 
+##    if { $list_ips_missing ne "" } {
+##       catch {common::send_gid_msg -ssname BD::TCL -id 2012 -severity "ERROR" "The following IPs are not found in the IP Catalog:\n  $list_ips_missing\n\nResolution: Please add the repository containing the IP(s) to the project." }
+##       set bCheckIPsPassed 0
+##    }
+## 
+## }
+INFO: [BD::TCL 103-2011] Checking if the following IPs exist in the project's IP catalog:  
+xilinx.com:ip:hbm:1.0 xilinx.com:ip:smartconnect:1.0 xilinx.com:ip:clk_wiz:6.0 xilinx.com:ip:proc_sys_reset:5.0 xilinx.com:ip:qdma:5.0 xilinx.com:ip:blk_mem_gen:8.4 xilinx.com:ip:axi_bram_ctrl:4.1 xilinx.com:ip:xlconstant:1.1  .
+## if { $bCheckIPsPassed != 1 } {
+##   common::send_gid_msg -ssname BD::TCL -id 2023 -severity "WARNING" "Will not continue with creation of design due to the error(s) above."
+##   return 3
+## }
+## proc create_root_design { parentCell } {
+## 
+##   variable script_folder
+##   variable design_name
+## 
+##   if { $parentCell eq "" } {
+##      set parentCell [get_bd_cells /]
+##   }
+## 
+##   # Get object for parentCell
+##   set parentObj [get_bd_cells $parentCell]
+##   if { $parentObj == "" } {
+##      catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}
+##      return
+##   }
+## 
+##   # Make sure parentObj is hier blk
+##   set parentType [get_property TYPE $parentObj]
+##   if { $parentType ne "hier" } {
+##      catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+##      return
+##   }
+## 
+##   # Save current instance; Restore later
+##   set oldCurInst [current_bd_instance .]
+## 
+##   # Set parent object as current
+##   current_bd_instance $parentObj
+## 
+## 
+##   # Create interface ports
+##   set pci_express_x16 [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:pcie_7x_mgt_rtl:1.0 pci_express_x16 ]
+## 
+## 
+##   # Create ports
+##   set hbm_clk_n [ create_bd_port -dir I -type clk -freq_hz 100000000 hbm_clk_n ]
+##   set hbm_clk_p [ create_bd_port -dir I -type clk -freq_hz 100000000 hbm_clk_p ]
+##   set aresetn [ create_bd_port -dir I -type rst aresetn ]
+##   set qdma_clk [ create_bd_port -dir I -type clk qdma_clk ]
+##   set qdma_clk_gt [ create_bd_port -dir I -type clk qdma_clk_gt ]
+## 
+##   # Create instance: hbm_0, and set properties
+##   set hbm_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:hbm:1.0 hbm_0 ]
+##   set_property -dict [list \
+##     CONFIG.USER_APB_EN {false} \
+##     CONFIG.USER_AXI_INPUT_CLK1_FREQ {250} \
+##     CONFIG.USER_AXI_INPUT_CLK_FREQ {250} \
+##     CONFIG.USER_HBM_DENSITY {16GB} \
+##     CONFIG.USER_MC0_USER_PARITY_EN {false} \
+##     CONFIG.USER_SAXI_00 {false} \
+##     CONFIG.USER_SAXI_01 {false} \
+##     CONFIG.USER_SAXI_02 {false} \
+##     CONFIG.USER_SAXI_03 {false} \
+##     CONFIG.USER_SAXI_04 {false} \
+##     CONFIG.USER_SAXI_05 {false} \
+##     CONFIG.USER_SAXI_06 {false} \
+##     CONFIG.USER_SAXI_07 {false} \
+##     CONFIG.USER_SAXI_08 {false} \
+##     CONFIG.USER_SAXI_09 {false} \
+##     CONFIG.USER_SAXI_10 {false} \
+##     CONFIG.USER_SAXI_11 {false} \
+##     CONFIG.USER_SAXI_12 {false} \
+##     CONFIG.USER_SAXI_13 {false} \
+##     CONFIG.USER_SAXI_14 {false} \
+##     CONFIG.USER_SAXI_17 {false} \
+##     CONFIG.USER_SAXI_18 {false} \
+##     CONFIG.USER_SAXI_19 {false} \
+##     CONFIG.USER_SAXI_20 {false} \
+##     CONFIG.USER_SAXI_21 {false} \
+##     CONFIG.USER_SAXI_22 {false} \
+##     CONFIG.USER_SAXI_23 {false} \
+##     CONFIG.USER_SAXI_24 {false} \
+##     CONFIG.USER_SAXI_25 {false} \
+##     CONFIG.USER_SAXI_26 {false} \
+##     CONFIG.USER_SAXI_27 {false} \
+##     CONFIG.USER_SAXI_28 {false} \
+##     CONFIG.USER_SAXI_29 {false} \
+##     CONFIG.USER_SAXI_30 {false} \
+##     CONFIG.USER_SAXI_31 {false} \
+##   ] $hbm_0
+## 
+## 
+##   # Create instance: smartconnect_0, and set properties
+##   set smartconnect_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:smartconnect:1.0 smartconnect_0 ]
+##   set_property -dict [list \
+##     CONFIG.NUM_MI {2} \
+##     CONFIG.NUM_SI {1} \
+##   ] $smartconnect_0
+## 
+## 
+##   # Create instance: clk_wiz_0, and set properties
+##   set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0 ]
+##   set_property -dict [list \
+##     CONFIG.PRIM_SOURCE {Differential_clock_capable_pin} \
+##     CONFIG.RESET_PORT {resetn} \
+##     CONFIG.RESET_TYPE {ACTIVE_LOW} \
+##   ] $clk_wiz_0
+## 
+## 
+##   # Create instance: proc_sys_reset_0, and set properties
+##   set proc_sys_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0 ]
+## 
+##   # Create instance: qdma_0, and set properties
+##   set qdma_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:qdma:5.0 qdma_0 ]
+##   set_property -dict [list \
+##     CONFIG.dma_intf_sel_qdma {AXI_MM} \
+##     CONFIG.en_gt_selection {false} \
+##     CONFIG.mode_selection {Advanced} \
+##     CONFIG.num_queues {2048} \
+##     CONFIG.pcie_blk_locn {PCIE4C_X1Y0} \
+##     CONFIG.pf0_bar2_enabled_qdma {true} \
+##     CONFIG.pf0_msix_enabled_qdma {false} \
+##     CONFIG.pl_link_cap_max_link_width {X16} \
+##   ] $qdma_0
+## 
+## 
+##   # Create instance: blk_mem_gen_0, and set properties
+##   set blk_mem_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 blk_mem_gen_0 ]
+## 
+##   # Create instance: axi_bram_ctrl_0, and set properties
+##   set axi_bram_ctrl_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.1 axi_bram_ctrl_0 ]
+##   set_property -dict [list \
+##     CONFIG.PROTOCOL {AXI4LITE} \
+##     CONFIG.SINGLE_PORT_BRAM {1} \
+##   ] $axi_bram_ctrl_0
+## 
+## 
+##   # Create instance: xlconstant_1, and set properties
+##   set xlconstant_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_1 ]
+## 
+##   # Create interface connections
+##   connect_bd_intf_net -intf_net axi_bram_ctrl_0_BRAM_PORTA [get_bd_intf_pins axi_bram_ctrl_0/BRAM_PORTA] [get_bd_intf_pins blk_mem_gen_0/BRAM_PORTA]
+##   connect_bd_intf_net -intf_net qdma_0_M_AXI [get_bd_intf_pins qdma_0/M_AXI] [get_bd_intf_pins smartconnect_0/S00_AXI]
+##   connect_bd_intf_net -intf_net qdma_0_M_AXI_LITE [get_bd_intf_pins qdma_0/M_AXI_LITE] [get_bd_intf_pins axi_bram_ctrl_0/S_AXI]
+##   connect_bd_intf_net -intf_net qdma_0_pcie_mgt [get_bd_intf_ports pci_express_x16] [get_bd_intf_pins qdma_0/pcie_mgt]
+##   connect_bd_intf_net -intf_net smartconnect_0_M00_AXI [get_bd_intf_pins smartconnect_0/M00_AXI] [get_bd_intf_pins hbm_0/SAXI_15_8HI]
+##   connect_bd_intf_net -intf_net smartconnect_0_M01_AXI [get_bd_intf_pins smartconnect_0/M01_AXI] [get_bd_intf_pins hbm_0/SAXI_16_8HI]
+## 
+##   # Create port connections
+##   connect_bd_net -net aclk_n_1 [get_bd_ports hbm_clk_n] [get_bd_pins clk_wiz_0/clk_in1_n]
+##   connect_bd_net -net aclk_p_1 [get_bd_ports hbm_clk_p] [get_bd_pins clk_wiz_0/clk_in1_p]
+##   connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins hbm_0/HBM_REF_CLK_0] [get_bd_pins hbm_0/HBM_REF_CLK_1] [get_bd_pins hbm_0/APB_0_PCLK] [get_bd_pins hbm_0/APB_1_PCLK] [get_bd_pins proc_sys_reset_0/slowest_sync_clk]
+##   connect_bd_net -net clk_wiz_0_locked [get_bd_pins clk_wiz_0/locked] [get_bd_pins proc_sys_reset_0/dcm_locked]
+##   connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins proc_sys_reset_0/peripheral_aresetn] [get_bd_pins hbm_0/APB_0_PRESET_N] [get_bd_pins hbm_0/APB_1_PRESET_N]
+##   connect_bd_net -net resetn_0_1 [get_bd_ports aresetn] [get_bd_pins proc_sys_reset_0/ext_reset_in] [get_bd_pins clk_wiz_0/resetn] [get_bd_pins qdma_0/sys_rst_n] [get_bd_pins qdma_0/soft_reset_n]
+##   connect_bd_net -net sys_clk_0_1 [get_bd_ports qdma_clk] [get_bd_pins qdma_0/sys_clk]
+##   connect_bd_net -net sys_clk_gt_0_1 [get_bd_ports qdma_clk_gt] [get_bd_pins qdma_0/sys_clk_gt]
+##   connect_bd_net -net qdma_0_axi_aclk [get_bd_pins qdma_0/axi_aclk] [get_bd_pins smartconnect_0/aclk] [get_bd_pins hbm_0/AXI_15_ACLK] [get_bd_pins hbm_0/AXI_16_ACLK] [get_bd_pins axi_bram_ctrl_0/s_axi_aclk]
+##   connect_bd_net -net qdma_0_axi_aresetn [get_bd_pins qdma_0/axi_aresetn] [get_bd_pins smartconnect_0/aresetn] [get_bd_pins hbm_0/AXI_15_ARESET_N] [get_bd_pins hbm_0/AXI_16_ARESET_N] [get_bd_pins axi_bram_ctrl_0/s_axi_aresetn]
+##   connect_bd_net -net xlconstant_1_dout [get_bd_pins xlconstant_1/dout] [get_bd_pins qdma_0/tm_dsc_sts_rdy] [get_bd_pins qdma_0/qsts_out_rdy]
+## 
+##   # Create address segments
+##   assign_bd_address -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM00] -force
+##   assign_bd_address -offset 0x20000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM01] -force
+##   assign_bd_address -offset 0x40000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM02] -force
+##   assign_bd_address -offset 0x60000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM03] -force
+##   assign_bd_address -offset 0x80000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM04] -force
+##   assign_bd_address -offset 0xA0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM05] -force
+##   assign_bd_address -offset 0xC0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM06] -force
+##   assign_bd_address -offset 0xE0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM07] -force
+##   assign_bd_address -offset 0x000100000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM08] -force
+##   assign_bd_address -offset 0x000120000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM09] -force
+##   assign_bd_address -offset 0x000140000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM10] -force
+##   assign_bd_address -offset 0x000160000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM11] -force
+##   assign_bd_address -offset 0x000180000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM12] -force
+##   assign_bd_address -offset 0x0001A0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM13] -force
+##   assign_bd_address -offset 0x0001C0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM14] -force
+##   assign_bd_address -offset 0x0001E0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM15] -force
+##   assign_bd_address -offset 0x000200000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM16] -force
+##   assign_bd_address -offset 0x000220000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM17] -force
+##   assign_bd_address -offset 0x000240000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM18] -force
+##   assign_bd_address -offset 0x000260000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM19] -force
+##   assign_bd_address -offset 0x000280000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM20] -force
+##   assign_bd_address -offset 0x0002A0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM21] -force
+##   assign_bd_address -offset 0x0002C0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM22] -force
+##   assign_bd_address -offset 0x0002E0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM23] -force
+##   assign_bd_address -offset 0x000300000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM24] -force
+##   assign_bd_address -offset 0x000320000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM25] -force
+##   assign_bd_address -offset 0x000340000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM26] -force
+##   assign_bd_address -offset 0x000360000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM27] -force
+##   assign_bd_address -offset 0x000380000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM28] -force
+##   assign_bd_address -offset 0x0003A0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM29] -force
+##   assign_bd_address -offset 0x0003C0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM30] -force
+##   assign_bd_address -offset 0x0003E0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM31] -force
+##   assign_bd_address -offset 0xC0000000 -range 0x00002000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI_LITE] [get_bd_addr_segs axi_bram_ctrl_0/S_AXI/Mem0] -force
+## 
+##   # Exclude Address Segments
+##   exclude_bd_addr_seg -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM00]
+##   exclude_bd_addr_seg -offset 0x000420000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM01]
+##   exclude_bd_addr_seg -offset 0x000440000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM02]
+##   exclude_bd_addr_seg -offset 0x000460000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM03]
+##   exclude_bd_addr_seg -offset 0x000480000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM04]
+##   exclude_bd_addr_seg -offset 0x0004A0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM05]
+##   exclude_bd_addr_seg -offset 0x0004C0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM06]
+##   exclude_bd_addr_seg -offset 0x0004E0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM07]
+##   exclude_bd_addr_seg -offset 0x000500000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM08]
+##   exclude_bd_addr_seg -offset 0x000520000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM09]
+##   exclude_bd_addr_seg -offset 0x000540000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM10]
+##   exclude_bd_addr_seg -offset 0x000560000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM11]
+##   exclude_bd_addr_seg -offset 0x000580000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM12]
+##   exclude_bd_addr_seg -offset 0x0005A0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM13]
+##   exclude_bd_addr_seg -offset 0x0005C0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM14]
+##   exclude_bd_addr_seg -offset 0x0005E0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_16_8HI/HBM_MEM15]
+##   exclude_bd_addr_seg -offset 0x000600000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM16]
+##   exclude_bd_addr_seg -offset 0x000620000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM17]
+##   exclude_bd_addr_seg -offset 0x000640000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM18]
+##   exclude_bd_addr_seg -offset 0x000660000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM19]
+##   exclude_bd_addr_seg -offset 0x000680000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM20]
+##   exclude_bd_addr_seg -offset 0x0006A0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM21]
+##   exclude_bd_addr_seg -offset 0x0006C0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM22]
+##   exclude_bd_addr_seg -offset 0x0006E0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM23]
+##   exclude_bd_addr_seg -offset 0x000700000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM24]
+##   exclude_bd_addr_seg -offset 0x000720000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM25]
+##   exclude_bd_addr_seg -offset 0x000740000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM26]
+##   exclude_bd_addr_seg -offset 0x000760000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM27]
+##   exclude_bd_addr_seg -offset 0x000780000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM28]
+##   exclude_bd_addr_seg -offset 0x0007A0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM29]
+##   exclude_bd_addr_seg -offset 0x0007C0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM30]
+##   exclude_bd_addr_seg -offset 0x0007E0000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces qdma_0/M_AXI] [get_bd_addr_segs hbm_0/SAXI_15_8HI/HBM_MEM31]
+## 
+## 
+##   # Restore current instance
+##   current_bd_instance $oldCurInst
+## 
+##   validate_bd_design
+##   save_bd_design
+## }
+## create_root_design ""
+WARNING: [BD 5-670] It is required to provide a frequency value for a user created input clock port. Please use the <-freq_hz $freq_val> argument of the create_bd_port command. ie create_bd_port -dir I -type clk -freq_hz 100000000 clkin
+WARNING: [BD 5-670] It is required to provide a frequency value for a user created input clock port. Please use the <-freq_hz $freq_val> argument of the create_bd_port command. ie create_bd_port -dir I -type clk -freq_hz 100000000 clkin
+INFO: [Device 21-403] Loading part xcu55c-fsvh2892-2L-e
+create_bd_cell: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 3027.656 ; gain = 1372.648 ; free physical = 31101 ; free virtual = 56294
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'PF3_INTERRUPT_PIN' from 'NONE' to 'INTA' has been ignored for IP 'qdma_hbm_bd_qdma_0_0/qdma_hbm_bd_qdma_0_0_pcie4c_ip'
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'PF2_INTERRUPT_PIN' from 'NONE' to 'INTA' has been ignored for IP 'qdma_hbm_bd_qdma_0_0/qdma_hbm_bd_qdma_0_0_pcie4c_ip'
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'PF1_INTERRUPT_PIN' from 'NONE' to 'INTA' has been ignored for IP 'qdma_hbm_bd_qdma_0_0/qdma_hbm_bd_qdma_0_0_pcie4c_ip'
+create_bd_cell: Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 3027.656 ; gain = 0.000 ; free physical = 31097 ; free virtual = 56299
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'PF3_INTERRUPT_PIN' from 'NONE' to 'INTA' has been ignored for IP 'qdma_hbm_bd_qdma_0_0/qdma_hbm_bd_qdma_0_0_pcie4c_ip'
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'PF2_INTERRUPT_PIN' from 'NONE' to 'INTA' has been ignored for IP 'qdma_hbm_bd_qdma_0_0/qdma_hbm_bd_qdma_0_0_pcie4c_ip'
+WARNING: [IP_Flow 19-3374] An attempt to modify the value of disabled parameter 'PF1_INTERRUPT_PIN' from 'NONE' to 'INTA' has been ignored for IP 'qdma_hbm_bd_qdma_0_0/qdma_hbm_bd_qdma_0_0_pcie4c_ip'
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-2] qdma_hbm_bd_axi_bram_ctrl_0_0: In IP Integrator, please note that memory depth value gets calculated based on the Data Width of the IP and Address range selected in the Address Editor.Incase a validation error occured on the range of this parameter, please check if the selected Data width and the Address Range are valid. For valid Data width and memory depth values, please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-1] qdma_hbm_bd_axi_bram_ctrl_0_0: In IP Integrator, The Maximum address range supported is 2G. Selecting the address range more than 2G in the address editor may resets the value of Memory depth to default value (1024). please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-2] qdma_hbm_bd_axi_bram_ctrl_0_0: In IP Integrator, please note that memory depth value gets calculated based on the Data Width of the IP and Address range selected in the Address Editor.Incase a validation error occured on the range of this parameter, please check if the selected Data width and the Address Range are valid. For valid Data width and memory depth values, please refer to the AXI BRAM Controller Product Guide.
+INFO: [xilinx.com:ip:axi_bram_ctrl:4.1-1] qdma_hbm_bd_axi_bram_ctrl_0_0: In IP Integrator, The Maximum address range supported is 2G. Selecting the address range more than 2G in the address editor may resets the value of Memory depth to default value (1024). please refer to the AXI BRAM Controller Product Guide.
+INFO: [BD 5-1043] It is recommended to use inline hdl version xilinx.com:inline_hdl:ilconstant:1.0 for the IP type xilinx.com:ip:xlconstant:1.1 for improved performance and reduced disk space. IPs with VLNV xilinx.com:ip:xlconstant:1.1 may be deprecated in future releases. More information on inline hdl IP is available in UG994 
+WARNING: [BD 41-1306] The connection to interface pin </clk_wiz_0/clk_in1_n> is being overridden by the user with net <aclk_n_1>. This pin will not be connected as a part of interface connection <CLK_IN1_D>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+WARNING: [BD 41-1306] The connection to interface pin </clk_wiz_0/clk_in1_p> is being overridden by the user with net <aclk_p_1>. This pin will not be connected as a part of interface connection <CLK_IN1_D>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+WARNING: [BD 41-1306] The connection to interface pin </qdma_0/tm_dsc_sts_rdy> is being overridden by the user with net <xlconstant_1_dout>. This pin will not be connected as a part of interface connection <tm_dsc_sts>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+WARNING: [BD 41-1306] The connection to interface pin </qdma_0/qsts_out_rdy> is being overridden by the user with net <xlconstant_1_dout>. This pin will not be connected as a part of interface connection <qsts_out>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM00' is being assigned into address space '/qdma_0/M_AXI' at <0x0000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM01' is being assigned into address space '/qdma_0/M_AXI' at <0x2000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM02' is being assigned into address space '/qdma_0/M_AXI' at <0x4000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM03' is being assigned into address space '/qdma_0/M_AXI' at <0x6000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM04' is being assigned into address space '/qdma_0/M_AXI' at <0x8000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM05' is being assigned into address space '/qdma_0/M_AXI' at <0xA000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM06' is being assigned into address space '/qdma_0/M_AXI' at <0xC000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM07' is being assigned into address space '/qdma_0/M_AXI' at <0xE000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM08' is being assigned into address space '/qdma_0/M_AXI' at <0x1_0000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM09' is being assigned into address space '/qdma_0/M_AXI' at <0x1_2000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM10' is being assigned into address space '/qdma_0/M_AXI' at <0x1_4000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM11' is being assigned into address space '/qdma_0/M_AXI' at <0x1_6000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM12' is being assigned into address space '/qdma_0/M_AXI' at <0x1_8000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM13' is being assigned into address space '/qdma_0/M_AXI' at <0x1_A000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM14' is being assigned into address space '/qdma_0/M_AXI' at <0x1_C000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM15' is being assigned into address space '/qdma_0/M_AXI' at <0x1_E000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM16' is being assigned into address space '/qdma_0/M_AXI' at <0x2_0000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM17' is being assigned into address space '/qdma_0/M_AXI' at <0x2_2000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM18' is being assigned into address space '/qdma_0/M_AXI' at <0x2_4000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM19' is being assigned into address space '/qdma_0/M_AXI' at <0x2_6000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM20' is being assigned into address space '/qdma_0/M_AXI' at <0x2_8000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM21' is being assigned into address space '/qdma_0/M_AXI' at <0x2_A000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM22' is being assigned into address space '/qdma_0/M_AXI' at <0x2_C000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM23' is being assigned into address space '/qdma_0/M_AXI' at <0x2_E000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM24' is being assigned into address space '/qdma_0/M_AXI' at <0x3_0000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM25' is being assigned into address space '/qdma_0/M_AXI' at <0x3_2000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM26' is being assigned into address space '/qdma_0/M_AXI' at <0x3_4000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM27' is being assigned into address space '/qdma_0/M_AXI' at <0x3_6000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM28' is being assigned into address space '/qdma_0/M_AXI' at <0x3_8000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM29' is being assigned into address space '/qdma_0/M_AXI' at <0x3_A000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM30' is being assigned into address space '/qdma_0/M_AXI' at <0x3_C000_0000 [ 512M ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM31' is being assigned into address space '/qdma_0/M_AXI' at <0x3_E000_0000 [ 512M ]>.
+Slave segment '/axi_bram_ctrl_0/S_AXI/Mem0' is being assigned into address space '/qdma_0/M_AXI_LITE' at <0xC000_0000 [ 8K ]>.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM00' is being assigned into address space '/qdma_0/M_AXI' at <0x0000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM00 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM01' is being assigned into address space '/qdma_0/M_AXI' at <0x4_2000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM01 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM02' is being assigned into address space '/qdma_0/M_AXI' at <0x4_4000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM02 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM03' is being assigned into address space '/qdma_0/M_AXI' at <0x4_6000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM03 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM04' is being assigned into address space '/qdma_0/M_AXI' at <0x4_8000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM04 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM05' is being assigned into address space '/qdma_0/M_AXI' at <0x4_A000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM05 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM06' is being assigned into address space '/qdma_0/M_AXI' at <0x4_C000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM06 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM07' is being assigned into address space '/qdma_0/M_AXI' at <0x4_E000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM07 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM08' is being assigned into address space '/qdma_0/M_AXI' at <0x5_0000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM08 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM09' is being assigned into address space '/qdma_0/M_AXI' at <0x5_2000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM09 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM10' is being assigned into address space '/qdma_0/M_AXI' at <0x5_4000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM10 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM11' is being assigned into address space '/qdma_0/M_AXI' at <0x5_6000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM11 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM12' is being assigned into address space '/qdma_0/M_AXI' at <0x5_8000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM12 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM13' is being assigned into address space '/qdma_0/M_AXI' at <0x5_A000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM13 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM14' is being assigned into address space '/qdma_0/M_AXI' at <0x5_C000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM14 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_16_8HI/HBM_MEM15' is being assigned into address space '/qdma_0/M_AXI' at <0x5_E000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM15 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM16' is being assigned into address space '/qdma_0/M_AXI' at <0x6_0000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM16 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM17' is being assigned into address space '/qdma_0/M_AXI' at <0x6_2000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM17 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM18' is being assigned into address space '/qdma_0/M_AXI' at <0x6_4000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM18 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM19' is being assigned into address space '/qdma_0/M_AXI' at <0x6_6000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM19 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM20' is being assigned into address space '/qdma_0/M_AXI' at <0x6_8000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM20 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM21' is being assigned into address space '/qdma_0/M_AXI' at <0x6_A000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM21 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM22' is being assigned into address space '/qdma_0/M_AXI' at <0x6_C000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM22 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM23' is being assigned into address space '/qdma_0/M_AXI' at <0x6_E000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM23 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM24' is being assigned into address space '/qdma_0/M_AXI' at <0x7_0000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM24 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM25' is being assigned into address space '/qdma_0/M_AXI' at <0x7_2000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM25 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM26' is being assigned into address space '/qdma_0/M_AXI' at <0x7_4000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM26 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM27' is being assigned into address space '/qdma_0/M_AXI' at <0x7_6000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM27 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM28' is being assigned into address space '/qdma_0/M_AXI' at <0x7_8000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM28 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM29' is being assigned into address space '/qdma_0/M_AXI' at <0x7_A000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM29 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM30' is being assigned into address space '/qdma_0/M_AXI' at <0x7_C000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM30 from address space /qdma_0/M_AXI.
+Slave segment '/hbm_0/SAXI_15_8HI/HBM_MEM31' is being assigned into address space '/qdma_0/M_AXI' at <0x7_E000_0000 [ 512M ]>.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM31 from address space /qdma_0/M_AXI.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM16> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM17> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM18> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM19> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM20> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM21> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM22> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM23> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM24> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM25> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM26> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM27> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM28> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM29> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM30> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_15_8HI/HBM_MEM31> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM00> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM01> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM02> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM03> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM04> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM05> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM06> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM07> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM08> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM09> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM10> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM11> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM12> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM13> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM14> is excluded from all addressing paths.
+WARNING: [BD 41-1629] Slave segment </hbm_0/SAXI_16_8HI/HBM_MEM15> is excluded from all addressing paths.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM00 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM01 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM02 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM03 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM04 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM05 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM06 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM07 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM08 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM09 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM10 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM11 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM12 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM13 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM14 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_16_8HI/HBM_MEM15 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM16 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM17 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM18 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM19 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM20 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM21 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM22 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM23 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM24 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM25 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM26 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM27 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM28 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM29 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM30 from address space /qdma_0/M_AXI.
+Excluding slave segment /hbm_0/SAXI_15_8HI/HBM_MEM31 from address space /qdma_0/M_AXI.
+INFO: [BD 5-943] Reserving offset range <0x0_0000_0000 [ 8G ]> from slave interface '/smartconnect_0/S00_AXI' to master interface '/smartconnect_0/M00_AXI'. This will be used by smartconnect on path for routing.
+INFO: [BD 5-943] Reserving offset range <0x2_0000_0000 [ 8G ]> from slave interface '/smartconnect_0/S00_AXI' to master interface '/smartconnect_0/M01_AXI'. This will be used by smartconnect on path for routing.
+INFO: [xilinx.com:ip:smartconnect:1.0-1] qdma_hbm_bd_smartconnect_0_0: SmartConnect qdma_hbm_bd_smartconnect_0_0 is in High-performance Mode.
+WARNING: [BD 41-2180] Resetting the memory initialization file of </blk_mem_gen_0> to default.
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /clk_wiz_0 clk_wiz propagate
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /hbm_0/SAXI_15_8HI(0) and /smartconnect_0/M00_AXI(32)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /hbm_0/SAXI_15_8HI(0) and /smartconnect_0/M00_AXI(32)
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /hbm_0/SAXI_16_8HI(0) and /smartconnect_0/M01_AXI(32)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /hbm_0/SAXI_16_8HI(0) and /smartconnect_0/M01_AXI(32)
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /axi_bram_ctrl_0/S_AXI(0) and /qdma_0/M_AXI_LITE(55)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /axi_bram_ctrl_0/S_AXI(0) and /qdma_0/M_AXI_LITE(55)
+Wrote  : </home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd> 
+# add_files -norecurse "src/qdma_top.sv"
+# add_files -norecurse "src/qdma_tb.sv"  -fileset sim_1
+# set_property top board [get_filesets sim_1]
+# start_gui
+WARNING: [Board 49-91] Board repository path '/home/khanna/OpenNIC_HBM/OpenNIC_SHELL_MODIFIED/board_files' does not exist, it will not be used to search board files.
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at /work_extra/tools/Xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at /work_extra/tools/Xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at /work_extra/tools/Xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+delete_bd_objs [get_bd_intf_nets qdma_0_M_AXI_LITE] [get_bd_intf_nets axi_bram_ctrl_0_BRAM_PORTA] [get_bd_cells axi_bram_ctrl_0]
+delete_bd_objs [get_bd_cells blk_mem_gen_0]
+delete_bd_objs [get_bd_nets xlconstant_1_dout] [get_bd_nets sys_clk_0_1] [get_bd_nets sys_clk_gt_0_1] [get_bd_intf_nets qdma_0_M_AXI] [get_bd_intf_nets qdma_0_pcie_mgt] [get_bd_cells qdma_0]
+delete_bd_objs [get_bd_ports qdma_clk]
+delete_bd_objs [get_bd_ports qdma_clk_gt]
+undo
+INFO: [Common 17-17] undo 'delete_bd_objs [get_bd_ports qdma_clk_gt]'
+undo
+INFO: [Common 17-17] undo 'delete_bd_objs [get_bd_ports qdma_clk]'
+undo
+INFO: [Common 17-17] undo 'delete_bd_objs [get_bd_nets xlconstant_1_dout] [get_bd_nets sys_clk_0_1] [get_bd_nets sys_clk_gt_0_1] [get_bd_intf_nets qdma_0_M_AXI] [get_bd_intf_nets qdma_0_pcie_mgt] [get_bd_cells qdma_0]'
+undo
+INFO: [Common 17-17] undo 'delete_bd_objs [get_bd_cells blk_mem_gen_0]'
+undo
+INFO: [Common 17-17] undo 'delete_bd_objs [get_bd_intf_nets qdma_0_M_AXI_LITE] [get_bd_intf_nets axi_bram_ctrl_0_BRAM_PORTA] [get_bd_cells axi_bram_ctrl_0]'
+undo
+INFO: [Common 17-17] undo 'set_property'
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+delete_bd_objs [get_bd_intf_nets axi_bram_ctrl_0_BRAM_PORTA] [get_bd_cells blk_mem_gen_0]
+delete_bd_objs [get_bd_intf_nets qdma_0_M_AXI_LITE] [get_bd_cells axi_bram_ctrl_0]
+undo
+INFO: [Common 17-17] undo 'delete_bd_objs [get_bd_intf_nets qdma_0_M_AXI_LITE] [get_bd_cells axi_bram_ctrl_0]'
+delete_bd_objs [get_bd_intf_nets qdma_0_M_AXI_LITE] [get_bd_cells axi_bram_ctrl_0]
+delete_bd_objs [get_bd_cells xlconstant_1]
+set_property location {0.5 26 220} [get_bd_cells qdma_0]
+delete_bd_objs [get_bd_nets xlconstant_1_dout]
+set_property location {114 802} [get_bd_ports hbm_clk_n]
+undo
+INFO: [Common 17-17] undo 'set_property location {114 802} [get_bd_ports hbm_clk_n]'
+delete_bd_objs [get_bd_intf_nets qdma_0_pcie_mgt]
+delete_bd_objs [get_bd_nets qdma_0_axi_aclk]
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/aclk]
+endgroup
+set_property location {185 60} [get_bd_ports aclk_0]
+set_property location {199 66} [get_bd_ports aclk_0]
+set_property location {225 -89} [get_bd_ports aclk_0]
+set_property location {198 -21} [get_bd_ports aclk_0]
+set_property location {186 -12} [get_bd_ports aclk_0]
+set_property location {342 84} [get_bd_ports aclk_0]
+delete_bd_objs [get_bd_nets aclk_0_1] [get_bd_ports aclk_0]
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/aclk]
+endgroup
+connect_bd_net [get_bd_ports aclk_0] [get_bd_pins hbm_0/AXI_15_ACLK]
+connect_bd_net [get_bd_ports aclk_0] [get_bd_pins hbm_0/AXI_16_ACLK]
+delete_bd_objs [get_bd_nets qdma_0_axi_aresetn]
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/aresetn]
+endgroup
+connect_bd_net [get_bd_ports aresetn_0] [get_bd_pins hbm_0/AXI_15_ARESET_N]
+connect_bd_net [get_bd_ports aresetn_0] [get_bd_pins hbm_0/AXI_16_ARESET_N]
+delete_bd_objs [get_bd_nets sys_clk_0_1] [get_bd_nets sys_clk_gt_0_1] [get_bd_intf_nets qdma_0_M_AXI] [get_bd_cells qdma_0]
+startgroup
+make_bd_intf_pins_external  [get_bd_intf_pins smartconnect_0/S00_AXI]
+endgroup
+delete_bd_objs [get_bd_intf_nets S00_AXI_0_1]
+set_property location {0.5 -941 417} [get_bd_cells smartconnect_0]
+set_property location {1.5 -94 275} [get_bd_cells smartconnect_0]
+delete_bd_objs [get_bd_ports qdma_clk_gt]
+delete_bd_objs [get_bd_ports qdma_clk]
+delete_bd_objs [get_bd_intf_ports S00_AXI_0]
+set_property location {-1177 139} [get_bd_ports aclk_0]
+set_property location {-1169 514} [get_bd_ports aclk_0]
+set_property location {-1201 436} [get_bd_ports aresetn_0]
+set_property location {2.5 477 -37} [get_bd_cells hbm_0]
+set_property location {1 -327 824} [get_bd_cells clk_wiz_0]
+set_property location {2 425 793} [get_bd_cells proc_sys_reset_0]
+set_property location {1.5 211 784} [get_bd_cells proc_sys_reset_0]
+set_property location {-1181 780} [get_bd_ports aresetn]
+set_property location {-1185 757} [get_bd_ports aclk_0]
+set_property location {-1188 735} [get_bd_ports aresetn_0]
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awid]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_awid> is being overridden by the user with net <S00_AXI_awid_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awaddr]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_awaddr> is being overridden by the user with net <S00_AXI_awaddr_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awlen]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_awlen> is being overridden by the user with net <S00_AXI_awlen_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awsize]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_awsize> is being overridden by the user with net <S00_AXI_awsize_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awburst]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_awburst> is being overridden by the user with net <S00_AXI_awburst_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awlock]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_awlock> is being overridden by the user with net <S00_AXI_awlock_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awcache]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_awcache> is being overridden by the user with net <S00_AXI_awcache_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awprot]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_awprot> is being overridden by the user with net <S00_AXI_awprot_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awqos]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_awqos> is being overridden by the user with net <S00_AXI_awqos_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awuser]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_awuser> is being overridden by the user with net <S00_AXI_awuser_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awvalid]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_awvalid> is being overridden by the user with net <S00_AXI_awvalid_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_awready]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_awready> is being overridden by the user with net <smartconnect_0_S00_AXI_awready>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+set_property location {-1285 143} [get_bd_ports S00_AXI_awready_0]
+set_property location {-1181 125} [get_bd_ports S00_AXI_awready_0]
+set_property location {-1195 89} [get_bd_ports S00_AXI_awready_0]
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_wdata]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_wdata> is being overridden by the user with net <S00_AXI_wdata_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_wstrb]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_wstrb> is being overridden by the user with net <S00_AXI_wstrb_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_wlast]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_wlast> is being overridden by the user with net <S00_AXI_wlast_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_wuser]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_wuser> is being overridden by the user with net <S00_AXI_wuser_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_wvalid]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_wvalid> is being overridden by the user with net <S00_AXI_wvalid_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_wready]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_wready> is being overridden by the user with net <smartconnect_0_S00_AXI_wready>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_bid]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_bid> is being overridden by the user with net <smartconnect_0_S00_AXI_bid>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+delete_bd_objs [get_bd_intf_ports pci_express_x16]
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_bresp]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_bresp> is being overridden by the user with net <smartconnect_0_S00_AXI_bresp>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_bvalid]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_bvalid> is being overridden by the user with net <smartconnect_0_S00_AXI_bvalid>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_bready]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_bready> is being overridden by the user with net <S00_AXI_bready_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arid]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_arid> is being overridden by the user with net <S00_AXI_arid_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_araddr]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_araddr> is being overridden by the user with net <S00_AXI_araddr_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arlen]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_arlen> is being overridden by the user with net <S00_AXI_arlen_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arsize]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_arsize> is being overridden by the user with net <S00_AXI_arsize_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arburst]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_arburst> is being overridden by the user with net <S00_AXI_arburst_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arlock]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_arlock> is being overridden by the user with net <S00_AXI_arlock_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arcache]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_arcache> is being overridden by the user with net <S00_AXI_arcache_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arprot]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_arprot> is being overridden by the user with net <S00_AXI_arprot_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arqos]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_arqos> is being overridden by the user with net <S00_AXI_arqos_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_aruser]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_aruser> is being overridden by the user with net <S00_AXI_aruser_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arvalid]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_arvalid> is being overridden by the user with net <S00_AXI_arvalid_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_arready]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_arready> is being overridden by the user with net <smartconnect_0_S00_AXI_arready>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_rid]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_rid> is being overridden by the user with net <smartconnect_0_S00_AXI_rid>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_rdata]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_rdata> is being overridden by the user with net <smartconnect_0_S00_AXI_rdata>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_rresp]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_rresp> is being overridden by the user with net <smartconnect_0_S00_AXI_rresp>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_rlast]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_rlast> is being overridden by the user with net <smartconnect_0_S00_AXI_rlast>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_rvalid]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_rvalid> is being overridden by the user with net <smartconnect_0_S00_AXI_rvalid>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins smartconnect_0/S00_AXI_rready]
+WARNING: [BD 41-1306] The connection to interface pin </smartconnect_0/S00_AXI_rready> is being overridden by the user with net <S00_AXI_rready_0_1>. This pin will not be connected as a part of interface connection <S00_AXI>, and might not recreate the connectivity as expected using the writ_bd_tcl command.
+endgroup
+save_bd_design
+Wrote  : </home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd> 
+Wrote  : </home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/ui/bd_809beba6.ui> 
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+launch_runs synth_1 -jobs 16
+CRITICAL WARNING: [BD 41-1811] The interconnect </smartconnect_0> is missing a valid slave interface connection
+CRITICAL WARNING: [BD 41-2909] Smartconnect block </smartconnect_0> has no assigned address segments through any of its interfaces and has its contents undefined, which may lead to black-box errors during implementation
+Resolution: Make sure that there is at least one address assigned through this Smartconnect and endpoints are correctly connected to each other
+WARNING: [SMARTCONNECT-2] The S_AXI ports of /smartconnect_0 are not connected to any endpoints.   Please connect at least one S_AXI port to an endpoint.
+INFO: [xilinx.com:ip:clk_wiz:6.0-1] /clk_wiz_0 clk_wiz propagate
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /hbm_0/SAXI_15_8HI(0) and /smartconnect_0/M00_AXI(32)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /hbm_0/SAXI_15_8HI(0) and /smartconnect_0/M00_AXI(32)
+WARNING: [BD 41-237] Bus Interface property AWUSER_WIDTH does not match between /hbm_0/SAXI_16_8HI(0) and /smartconnect_0/M01_AXI(32)
+WARNING: [BD 41-237] Bus Interface property ARUSER_WIDTH does not match between /hbm_0/SAXI_16_8HI(0) and /smartconnect_0/M01_AXI(32)
+Wrote  : </home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd> 
+Wrote  : </home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/ui/bd_809beba6.ui> 
+Verilog Output written to : /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/synth/qdma_hbm_bd.v
+Verilog Output written to : /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/sim/qdma_hbm_bd.v
+Verilog Output written to : /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/hdl/qdma_hbm_bd_wrapper.v
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'SAXI_15_8HI'. A default connection has been created.
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'SAXI_16_8HI'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block hbm_0 .
+Exporting to file /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_smartconnect_0_0/bd_0/hw_handoff/qdma_hbm_bd_smartconnect_0_0.hwh
+Generated Hardware Definition File /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/ip/qdma_hbm_bd_smartconnect_0_0/bd_0/synth/qdma_hbm_bd_smartconnect_0_0.hwdef
+INFO: [BD 41-1029] Generation completed for the IP Integrator block smartconnect_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block clk_wiz_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block proc_sys_reset_0 .
+Exporting to file /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/hw_handoff/qdma_hbm_bd.hwh
+Generated Hardware Definition File /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.gen/sources_1/bd/qdma_hbm_bd/synth/qdma_hbm_bd.hwdef
+INFO: [IP_Flow 19-6930] IPCACHE: runCacheChecks() number of threads = 8
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP qdma_hbm_bd_clk_wiz_0_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP qdma_hbm_bd_hbm_0_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP qdma_hbm_bd_proc_sys_reset_0_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP qdma_hbm_bd_smartconnect_0_0
+INFO: [IP_Flow 19-8020] IPCACHE: runCacheChecks() calling threadPool finishWork()
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: qdma_hbm_bd_clk_wiz_0_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: qdma_hbm_bd_hbm_0_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: qdma_hbm_bd_proc_sys_reset_0_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: qdma_hbm_bd_smartconnect_0_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Wed Mar 26 16:45:06 2025] Launched qdma_hbm_bd_hbm_0_0_synth_1, qdma_hbm_bd_smartconnect_0_0_synth_1, qdma_hbm_bd_clk_wiz_0_0_synth_1, qdma_hbm_bd_proc_sys_reset_0_0_synth_1...
+Run output will be captured here:
+qdma_hbm_bd_hbm_0_0_synth_1: /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.runs/qdma_hbm_bd_hbm_0_0_synth_1/runme.log
+qdma_hbm_bd_smartconnect_0_0_synth_1: /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.runs/qdma_hbm_bd_smartconnect_0_0_synth_1/runme.log
+qdma_hbm_bd_clk_wiz_0_0_synth_1: /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.runs/qdma_hbm_bd_clk_wiz_0_0_synth_1/runme.log
+qdma_hbm_bd_proc_sys_reset_0_0_synth_1: /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.runs/qdma_hbm_bd_proc_sys_reset_0_0_synth_1/runme.log
+[Wed Mar 26 16:45:06 2025] Launched synth_1...
+Run output will be captured here: /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.runs/synth_1/runme.log
+launch_runs: Time (s): cpu = 00:00:13 ; elapsed = 00:00:10 . Memory (MB): peak = 10198.223 ; gain = 244.656 ; free physical = 30374 ; free virtual = 55676
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+INFO: [IP_Flow 19-6930] IPCACHE: runCacheChecks() number of threads = 8
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP qdma_hbm_bd_hbm_0_0
+INFO: [IP_Flow 19-6921] IPCACHE: Adding cache check func to thread queue for IP qdma_hbm_bd_smartconnect_0_0
+INFO: [IP_Flow 19-8020] IPCACHE: runCacheChecks() calling threadPool finishWork()
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: qdma_hbm_bd_hbm_0_0
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: qdma_hbm_bd_smartconnect_0_0
+WARNING: [Vivado 12-7122] Auto Incremental Compile:: No reference checkpoint was found in run synth_1. Auto-incremental flow will not be run, the standard flow will be run instead.
+[Wed Mar 26 16:46:17 2025] Launched qdma_hbm_bd_hbm_0_0_synth_1, qdma_hbm_bd_smartconnect_0_0_synth_1...
+Run output will be captured here:
+qdma_hbm_bd_hbm_0_0_synth_1: /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.runs/qdma_hbm_bd_hbm_0_0_synth_1/runme.log
+qdma_hbm_bd_smartconnect_0_0_synth_1: /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.runs/qdma_hbm_bd_smartconnect_0_0_synth_1/runme.log
+[Wed Mar 26 16:46:17 2025] Launched synth_1...
+Run output will be captured here: /home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.runs/synth_1/runme.log
+remove_files  -fileset sim_1 /home/khanna/HBM/PCIe-HBM_basic-prj/src/qdma_tb.sv
+update_compile_order -fileset sim_1
+ipx::package_project -root_dir /home/khanna/HBM/ip_repo -vendor user.org -library user -taxonomy /UserIP -module qdma_hbm_bd -import_files
+INFO: [BD 41-1637] Generated targets are already up-to-date for block design 'qdma_hbm_bd' - hence not re-generating.
+WARNING: [IP_Flow 19-5175] IP 'qdma_hbm_bd_smartconnect_0_0' cannot be packaged with the 'XCI' option. IP will be packaged as generated HDL source files.
+WARNING: [IP_Flow 19-4963] qdma_hbm_bd_hbm_0_0 has board value specified. The packaged IP will be restricted to usage with board 'xilinx.com:au55c:part0:1.0'
+INFO: [IP_Flow 19-5654] Module 'qdma_hbm_bd' uses SystemVerilog sources with a Verilog top file. These SystemVerilog files will not be analysed by the packager.
+WARNING: [IP_Flow 19-11888] Component Definition 'user.org:user:qdma_hbm_bd:1.0 (qdma_hbm_bd_v1_0)': IP description "qdma_hbm_bd_v1_0" is not meaningful: same as name or display name
+INFO: [IP_Flow 19-7067] Note that bus interface 'CLK.HBM_CLK_N' has a fixed FREQ_HZ of '100000000'. This value will be respected whenever this IP is instantiated in IP Integrator.
+WARNING: [IP_Flow 19-5661] Bus Interface 'CLK.HBM_CLK_N' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-7067] Note that bus interface 'CLK.HBM_CLK_P' has a fixed FREQ_HZ of '100000000'. This value will be respected whenever this IP is instantiated in IP Integrator.
+WARNING: [IP_Flow 19-5661] Bus Interface 'CLK.HBM_CLK_P' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-7067] Note that bus interface 'CLK.ACLK_0' has a fixed FREQ_HZ of '250000000'. This value will be respected whenever this IP is instantiated in IP Integrator.
+WARNING: [IP_Flow 19-5661] Bus Interface 'CLK.ACLK_0' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-2181] Payment is not required for this core.
+WARNING: [IP_Flow 19-2187] The Product Guide file is missing.
+ipx::unload_core /home/khanna/HBM/ip_repo/component.xml
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+open_bd_design {/home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd}
+set_property  ip_repo_paths  /home/khanna/HBM/ip_repo [current_project]
+update_ip_catalog
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/khanna/HBM/ip_repo'.
+create_bd_cell -type ip -vlnv user.org:user:qdma_hbm_bd:1.0 qdma_hbm_bd_0
+set_property location {0.5 -2010 297} [get_bd_cells qdma_hbm_bd_0]
+set_property location {1.5 -1167 888} [get_bd_cells qdma_hbm_bd_0]
+save_bd_design
+Wrote  : </home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/qdma_hbm_bd.bd> 
+Wrote  : </home/khanna/HBM/PCIe-HBM_basic-prj/vivado_gen/pcie-hbm_sim/pcie-hbm_sim.srcs/sources_1/bd/qdma_hbm_bd/ui/bd_809beba6.ui> 
+exit
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 26 17:00:11 2025...
