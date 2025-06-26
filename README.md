@@ -2,22 +2,16 @@
 
 The data transmission pipeline, **{Host <-> PCIe <-> QDMA <-> Smart Connect <-> HBM}**, enables communication between the host memory (main memory) and the HBM (High Bandwidth Memory).
 
-Initially, the host is connected to the PCIe, which acts as an intermediary between the host and the QDMA (Queue Direct Memory Access) module. The PCIe serves as the communication link, transferring data in a serial stream. 
-
-Next, the QDMA module comes into play. It is an optimized version of the standard DMA (Direct Memory Access), which facilitates data transfers between two parties without CPU involvement. DMA is typically used to move data between a memory and a peripheral or between two memory regions. The key improvement in QDMA is its queuing mechanism, which enables concurrent scheduling of multiple transfers. This enhances throughput despite the PCIe being a serial bus, by effectively overlapping transfers and eliminating latency. 
+Initially, the host issues transaction that go through the PCIe, which acts as an intermediary between the host and the QDMA (Queue Direct Memory Access) module. The PCIe serves as the communication link, transferring data in a serial stream from/to host/device. The QDMA module, an optimized version of the standard DMA (Direct Memory Access), facilitates the data transfers between two parties without CPU involvement. DMA is typically used to move data between a memory and a peripheral or between two memory regions. The key improvement in QDMA is its queuing mechanism, which enables concurrent scheduling of multiple transfers. This enhances throughput despite the PCIe being a serial bus, by effectively overlapping transfers and eliminating latency. 
 
 In simpler terms, the parallelism in this setup refers to how many transfer requests can be prepared and ready at once, ensuring that no time is wasted between transfers.
 
-To initiate a data transfer over PCIe, a **scripter** must be initialized. A scripter is a 32-byte data structure that typically contains:
+To initiate a data transfer over PCIe, a **a descriptor** must be initialized. A descriptor is a 32-byte data structure that typically contains:
 - Address of structure (pointer where the script resides)
 - Destination address in HBM (where the data is being moved to)
 - Amount of data to be moved
 
-Each scripter acts as a small instruction set for the QDMA, guiding the data movement process. Scripters are always set up by the host (Linux), regardless of the direction of the intended transfer. The QDMA can support up to 2048 queues, each containing addresses for the scripters. 
-
-Furthermore, the QDMA module is configured to operate in memory-mapped mode, rather than AXI stream mode. This means the QDMA converts PCIe packets into AXI transactions, specifically AXI4 memory-mapped transactions, which include address data, control information, and data. These transactions are special due to their random access pattern and precise memory control.
-
-The AXI-4 transactions are forwarded to the **Smart Connect** via the MAXI interface. The Smart Connect acts as an arbiter, routing the AXI4 transactions to the HBM banks. This configuration leverages the HBM's parallel access capabilities, allowing each transaction to target a specific memory region.
+Each descriptor acts as a small instruction set for the QDMA, guiding the data movement process. Decriptors are always set up by the host, regardless of the direction of the intended transfer. The QDMA can support up to 2048 queues, each containing addresses for the descriptors. Furthermore, the QDMA module is configured to operate in memory-mapped mode, rather than AXI stream mode. This means the QDMA converts PCIe packets into AXI transactions, specifically AXI4 memory-mapped transactions, which include address data, control information, and data. These transactions are special due to their random access pattern and precise memory control. These AXI-4 transactions are then forwarded to the **Smart Connect** vhich acts as an arbiter, routing the AXI4 transactions to the HBM banks. One of the important roles of the Smart Connect is to convert AXI4 transactions into AXI3 transactions, matching the HBM interface type.  This configuration leverages the HBM's parallel access capabilities, allowing each transaction to target a specific memory region.
 
 ## PCIE AND HBM SIMULATION
 
