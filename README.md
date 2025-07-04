@@ -1,6 +1,7 @@
 ## PCIE AND HBM SIMULATION
 
-This folder contains the necessary sources and scripts to generate a Vivado project targeting an Alveo [U55C](https://www.amd.com/en/products/accelerators/alveo/u55c/a-u55c-p00g-pq-g.html) board and launch a Questa simulation of a system containing a set of Snitch cores connected with an HBM and a QDMA interface for PCIe. The simulation consists in loading the binary file of a Polybench into the HBM memory, and then running such program with the Snitch cores.
+This folder contains the necessary sources and scripts to generate a Vivado project targeting an Alveo [U55C](https://www.amd.com/en/products/accelerators/alveo/u55c/a-u55c-p00g-pq-g.html) board 
+(AMD Virtex™ UltraScale+™ FPGAs) and launch a Questa simulation of a system containing a set of Snitch cores connected with an HBM and a QDMA interface for PCIe. The simulation consists in loading the binary file of a Polybench into the HBM memory, and then running such program with the Snitch cores.
 
 ### What you need to do:
 
