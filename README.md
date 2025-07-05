@@ -41,3 +41,96 @@ This functions use a single queue which is populated with various descriptors ge
     - `qdma_tb.sv:` top testbench source file
     - `qdma_top.sv:` top synthesizable file, containing the block design
 - **tcl:** it contains two tcl scripts, one to generate the project and one to generate the block design.
+
+# QDMA Device Setup Guide
+
+> ⚙️ **Commands in this guide are based on the official [Xilinx QDMA driver repository](https://github.com/Xilinx/dma_ip_drivers)** (`QDMA` directory).
+
+## 📌 Hardware Testing with PCIe and HBM on Alveo U55C
+
+This guide is intended to help you validate the PCIe–HBM–QDMA design on real hardware using the **AMD Alveo U55C FPGA board**.
+
+If you have implemented the design, generated a bitstream and MCS file following the [U55C boot guide](https://docs.amd.com/r/en-US/ug1469-alveo-u55c), and flashed the device, you can **test the design directly on the board** by installing the QDMA Linux drivers and running the commands below. (You might need to remove the PCIe device when you flash the MCS into the board, and create a script to rescan it)
+
+These commands allow you to:
+- Detect the QDMA device
+- Configure queue pairs
+- Perform data transfers between the **host** and **HBM** memory
+- Validate queue behavior (H2C/C2H)
+
+---
+
+## 🔧 Steps to Configure and Test QDMA
+
+### 1. List QDMA Devices
+
+```bash
+dma-ctl dev list
+```
+
+---
+
+### 2. Switch to Root
+
+```bash
+sudo su
+```
+
+---
+
+### 3. Set the Number of Queues
+
+```bash
+echo 512 > /sys/bus/pci/devices/0000:07:00.0/qdma/qmax
+```
+
+> Replace the PCIe address if needed.
+
+---
+
+### 4. Add Queues
+
+```bash
+dma-ctl qdma07000 q add idx 0 mode mm dir h2c
+dma-ctl qdma07000 q add idx 1 mode mm dir c2h
+```
+
+---
+
+### 5. Start Queues
+
+```bash
+dma-ctl qdma07000 q start idx 0 dir h2c
+dma-ctl qdma07000 q start idx 1 dir c2h
+```
+
+---
+
+### 6. Stop and Delete Queues
+
+```bash
+dma-ctl qdma07000 q stop idx 0 dir h2c
+dma-ctl qdma07000 q del idx 0 dir h2c
+```
+
+> Always stop a queue before deleting it.
+
+---
+
+### 7. Transfer Data Between Host and Device
+
+First, create a file (`testFileSend.txt`) containing the data to be sent. In this example, we transfer 64 bytes.
+
+```bash
+# Send data from host to device (H2C)
+dma-to-device -d /dev/qdma07000-MM-0 -s 64 -a 0x00000000 -v -f testFileSend.txt -w testReadBack.txt
+
+# Note: testReadBack.txt is just a transfer confirmation, not read from HBM.
+```
+
+```bash
+# Read data back from device to host (C2H)
+dma-from-device -d /dev/qdma07000-MM-1 -s 64 -a 0x00000000 -v -f testFileReceive.txt
+```
+
+---
